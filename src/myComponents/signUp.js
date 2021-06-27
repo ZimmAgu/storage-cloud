@@ -13,6 +13,8 @@ function SignUpForm () {
 
     const {signUserUp} = useAuthContext(); // Firebase functionality imported from authorization.js to add a new user to the database
     const [formError, setFormError] = useState(''); // Will be used to print out an error message to the screen if something goes wrong with sign in
+    const [pageIsLoading, setLoadingStatus] = useState(false); // These states will be used to check whether or not the page is still rendering
+
 
     function handleFormSubmission (event) {
         event.preventDefault();
@@ -22,14 +24,16 @@ function SignUpForm () {
         }
 
         try {
-            setFormError('')
-            signUserUp(signUpEmailRef.current.value, signUpPasswordRef.current.value) // Creates the user accout
-            console.log('The sign in was a success')
+            setFormError('');
+            setLoadingStatus(true);
+            signUserUp(signUpEmailRef.current.value, signUpPasswordRef.current.value); // Creates the user accout
+            console.log('The sign in was a success');
         } catch {
-            setFormError('Sign in did not work')
-            console.log('Sign in did not work')
+            setFormError('Sign in did not work');
+            console.log('Sign in did not work');
         }
         
+        setLoadingStatus(false);
     }
 
     return (
@@ -57,7 +61,7 @@ function SignUpForm () {
                                     <Form.Control type="password" placeholder="Confirm Password" ref={signUpPasswordConfRef} required/>
                                 </Form.Group>
 
-                                <Button className="w-100 " type="submit">Sign Up</Button>
+                                <Button className="w-100 " type="submit" disabled={pageIsLoading}>Sign Up</Button>
                             </Form>
                         </Card.Body>
                     </Card>
