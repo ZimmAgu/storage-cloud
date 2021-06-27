@@ -11,7 +11,7 @@ function useAuthContext () {
 
 
 
-function AuthorizationProvider( {descendants} ) { // Whatever props are passed to this function will inherit the Context value
+function AuthorizationProvider() { // Whatever props are passed to this function will inherit the Context value
     const [currentUser, setCurrentUser] = useState('') // There is no current user until someone signs up of signs in
     
     function signUserUp (email, password) { // Will be imported to signUp.js and used to create a user
