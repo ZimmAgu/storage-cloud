@@ -10,7 +10,7 @@ const firebaseApp = firebase.initializeApp({
     appId: process.env.REACT_APP_FIREBASE_APP_ID
 })
 
-export const auth = app.auth()
+export const auth = firebaseApp.auth()
 export default firebaseApp;
 
 
