@@ -37,6 +37,7 @@ function AuthorizationProvider() { // Whatever props are passed to this function
     } // This provider will use this to pass the state of the current user to all descendants
 
 
+    // The sign in form will not be rendered until the user authorization has finished loading
     return (
         <>
             <AuthorizationContext.Provider value={user}>
