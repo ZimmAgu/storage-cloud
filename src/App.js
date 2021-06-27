@@ -1,11 +1,11 @@
 import React from 'react';
-import SignUpForm from './myComponents/signUp';
+import AuthorizationProvider from './authorization';
 
 
 function App () {
   return (
     <>
-      <SignUpForm />
+      <AuthorizationProvider />
     </>
   );
 }
