@@ -2,6 +2,7 @@ import {React, useRef, useState} from 'react';
 import {Alert, Button, Card, Container, Form} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useAuthContext} from '../authorization';
+import {Link} from 'react-router-dom'
 
 
 function SignUpForm () {
@@ -20,18 +21,23 @@ function SignUpForm () {
         event.preventDefault();
 
         if (signUpPasswordRef.current.value !== signUpPasswordConfRef.current.value) { // If the password & the password confirmation are different in any way the function will end without creating an account for the user
-            return setFormError('The passwords do not match'); 
+            setFormError('The passwords do not match'); 
+            return;
         }
 
-        try {
-            setFormError('');
-            setLoadingStatus(true);
-            signUserUp(signUpEmailRef.current.value, signUpPasswordRef.current.value); // Creates the user accout
-            console.log('The sign in was a success');
-        } catch {
-            setFormError('Sign in did not work');
-            console.log('Sign in did not work');
-        }
+        
+  
+
+        signUserUp(signUpEmailRef.current.value, signUpPasswordRef.current.value) // Creates the user accout
+            .then(() => {
+                setFormError('');
+                setLoadingStatus(true);
+                console.log('The sign up was a success');  
+            })
+            .catch(() => {
+                setFormError('Sign in did not work');
+                console.log('Sign in did not work');
+            })
         
         setLoadingStatus(false);
     }
@@ -65,7 +71,9 @@ function SignUpForm () {
                             </Form>
                         </Card.Body>
                     </Card>
-                    <div className="w-100 text-center mt-2">Already have an account? Log in</div>
+                    <div className="w-100 text-center mt-2">
+                        Already have an account? <Link to="./login">Log in</Link>
+                    </div>
                 </div>
             </Container>
         </>

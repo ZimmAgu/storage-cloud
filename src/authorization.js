@@ -1,5 +1,4 @@
 import React, {useState, useContext, useEffect} from 'react'
-import SignUpForm from './myComponents/signUp'; 
 import { auth } from './firebase'
 
 const AuthorizationContext = React.createContext() 
@@ -21,6 +20,10 @@ function AuthorizationProvider({children}) { // Whatever props are passed to thi
         return auth.createUserWithEmailAndPassword(email, password)
     }
 
+    function logUserIn (email, password) {
+        return auth.signInWithEmailAndPassword(email, password)
+    }
+
     useEffect(() => { 
         const cleanUp = auth.onAuthStateChanged(userState => { // When a user logs in, the current user will be set to the logged in user. When a user logs out, the current user will be set to null
             setCurrentUser(userState)
@@ -33,7 +36,8 @@ function AuthorizationProvider({children}) { // Whatever props are passed to thi
     
     const user = {
         currentUser,
-        signUserUp
+        signUserUp,
+        logUserIn
     } // This provider will use this to pass the state of the current user to all descendants
 
 
