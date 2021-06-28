@@ -11,7 +11,7 @@ function useAuthContext () {
 
 
 
-function AuthorizationProvider() { // Whatever props are passed to this function will inherit the Context value
+function AuthorizationProvider({children}) { // Whatever props are passed to this function will inherit the Context value
     const [currentUser, setCurrentUser] = useState('') // There is no current user until someone signs up of signs in
     const [pageIsLoading, setLoadingStatus] = useState(true); // These states will be used to check whether or not the page is still rendering
     
@@ -41,7 +41,7 @@ function AuthorizationProvider() { // Whatever props are passed to this function
     return (
         <>
             <AuthorizationContext.Provider value={user}>
-                {!pageIsLoading && <SignUpForm />}
+                {!pageIsLoading && children}    
             </AuthorizationContext.Provider>
         </>
     )

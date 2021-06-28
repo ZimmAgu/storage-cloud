@@ -4,7 +4,6 @@ import SignUpForm from './myComponents/signUp';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 
-
 function App () {
     return (
         <>
@@ -12,6 +11,7 @@ function App () {
                 <Switch>
                     <Route
                         path="/signup"
+
                         render={() => (
                             <AuthorizationProvider>
                                 <SignUpForm />
