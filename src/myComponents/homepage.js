@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {useAuthContext} from '../authorization'
+import {useAuthContext} from '../firebaseAuth/authorization'
 import {Alert, Button, Card, Container} from 'react-bootstrap'
 import {Link, useHistory} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
