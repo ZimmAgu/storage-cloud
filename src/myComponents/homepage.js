@@ -1,13 +1,22 @@
 import React from 'react'
 
 import {useAuthContext} from '../authorization'
-import {Alert, Button, Card, Container, Row} from 'react-bootstrap'
+import {Alert, Button, Card, Container} from 'react-bootstrap'
+import {Link, useHistory} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Homepage() {
-    const {currentUser} = useAuthContext()
+    const {currentUser, logUserOut} = useAuthContext()
+    const history = useHistory();
 
     console.log(currentUser.email)
+
+    function handleLogOut () {
+        logUserOut().then(() => {
+            history.push('./login')
+        })
+        
+    }
 
     return (
         <>
@@ -19,7 +28,7 @@ function Homepage() {
                         </Card.Body>
                     </Card>
                     <div>
-                        <Button className="w-100 text-center mt-2">
+                        <Button className="w-100 text-center mt-2" onClick={handleLogOut}>
                             Log Out
                         </Button>
                     </div>

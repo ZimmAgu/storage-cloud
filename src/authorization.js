@@ -20,9 +20,18 @@ function AuthorizationProvider({children}) { // Whatever props are passed to thi
         return auth.createUserWithEmailAndPassword(email, password)
     }
 
+
+
     function logUserIn (email, password) {
         return auth.signInWithEmailAndPassword(email, password)
     }
+
+
+    function logUserOut () {
+        return auth.signOut()
+    }
+
+
 
     useEffect(() => { 
         const cleanUp = auth.onAuthStateChanged(userState => { // When a user logs in, the current user will be set to the logged in user. When a user logs out, the current user will be set to null
@@ -34,11 +43,14 @@ function AuthorizationProvider({children}) { // Whatever props are passed to thi
     }, []) // The current user should only be set on mount instead of every time the function is rendered
 
     
+
     const user = {
         currentUser,
         signUserUp,
-        logUserIn
+        logUserIn,
+        logUserOut
     } // This provider will use this to pass the state of the current user to all descendants
+
 
 
     // The sign in form will not be rendered until the user authorization has finished loading
