@@ -55,6 +55,9 @@ function LoginForm () {
 
                                 <Button className="w-100 " type="submit" disabled={pageIsLoading}>Log In</Button>
                             </Form>
+                            <div className="w-100 text-center mt-2">
+                                <Link to="./forgotpassword">Forgot Password?</Link>
+                            </div>
                         </Card.Body>
                     </Card>
                     <div className="w-100 text-center mt-2">
