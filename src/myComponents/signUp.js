@@ -2,7 +2,7 @@ import {React, useRef, useState} from 'react';
 import {Alert, Button, Card, Container, Form} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useAuthContext} from '../authorization';
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 
 
 function SignUpForm () {
@@ -15,6 +15,7 @@ function SignUpForm () {
     const {signUserUp} = useAuthContext(); // Firebase functionality imported from authorization.js to add a new user to the database
     const [formError, setFormError] = useState(''); // Will be used to print out an error message to the screen if something goes wrong with sign in
     const [pageIsLoading, setLoadingStatus] = useState(false); // These states will be used to check whether or not the page is still rendering
+    const history = useHistory()
 
 
     function handleFormSubmission (event) {
@@ -32,7 +33,8 @@ function SignUpForm () {
             .then(() => {
                 setFormError('');
                 setLoadingStatus(true);
-                console.log('The sign up was a success');  
+                console.log('The sign up was a success'); 
+                history.push('/') // Redirects to the root page of the document
             })
             .catch(() => {
                 setFormError('Sign in did not work');
