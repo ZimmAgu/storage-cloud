@@ -11,35 +11,13 @@ function App () {
         <>
             <Router>
                 <Switch>
-                    <Route
-                        exact path="/"
+                    <AuthorizationProvider>
+                        <Route exact path="/" component={Homepage} />
 
-                        render={() => (
-                            <AuthorizationProvider>
-                                <Homepage />
-                            </AuthorizationProvider>
-                         )}
-                    />
+                        <Route path="/signup" component={SignUpForm} />
 
-                    <Route
-                        path="/signup"
-
-                        render={() => (
-                            <AuthorizationProvider>
-                                <SignUpForm />
-                            </AuthorizationProvider>
-                         )}
-                    />
-
-                    <Route
-                        exact path="/login"
-
-                        render={() => (
-                            <AuthorizationProvider>
-                                <LoginForm />
-                            </AuthorizationProvider>
-                         )}
-                    />
+                        <Route exact path="/login" component={LoginForm} />
+                    </AuthorizationProvider>
                 </Switch>
             </Router>
         </>
