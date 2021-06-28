@@ -4,6 +4,7 @@ import SignUpForm from './myComponents/SignUp';
 import LoginForm from './myComponents/Login';
 import Homepage from './myComponents/Homepage';
 import PrivateRoute from './myComponents/PrivateRoute';
+import ForgotPassword from './myComponents/ForgotPassword';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 
@@ -17,7 +18,9 @@ function App () {
 
                         <Route path="/signup" component={SignUpForm} />
 
-                        <Route exact path="/login" component={LoginForm} />
+                        <Route path="/login" component={LoginForm} />
+
+                        <Route path="/forgotpassword" component={ForgotPassword}/>
                     </AuthorizationProvider>
                 </Switch>
             </Router>
