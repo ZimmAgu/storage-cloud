@@ -9,14 +9,18 @@ function LoginForm () {
     const loginEmailRef = useRef();
     const loginPasswordRef = useRef();
 
-    const {logUserIn} = useAuthContext(); // Firebase functionality imported from authorization.js to add a new user to the database
+    const {currentUser, logUserIn} = useAuthContext(); // Firebase functionality imported from authorization.js to add a new user to the database
     const [formError, setFormError] = useState(''); // Will be used to print out an error message to the screen if something goes wrong with sign in
     const [pageIsLoading, setLoadingStatus] = useState(false); // These states will be used to check whether or not the page is still rendering
     const history = useHistory()
     
+    if (currentUser) { // If someone is logged in go straight to the homepage
+        history.push('/')
+    }
+
+
     function handleFormSubmission (event) {
         event.preventDefault()
-        
         
         logUserIn(loginEmailRef.current.value, loginPasswordRef.current.value)
             .then(() => {

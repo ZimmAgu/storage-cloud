@@ -38,9 +38,11 @@ function AuthorizationProvider({children}) { // Whatever props are passed to thi
 
 
     useEffect(() => { 
-        const cleanUp = auth.onAuthStateChanged(userState => { // When a user logs in, the current user will be set to the logged in user. When a user logs out, the current user will be set to null
-            setCurrentUser(userState)
+        const cleanUp = auth.onAuthStateChanged(user => { // When a user logs in, the current user will be set to the logged in user. When a user logs out, the current user will be set to null
+            setCurrentUser(user)
+            console.log('user is set ' + JSON.stringify(user))
             setLoadingStatus(false); // Once the user has successfully signed in (or out), that means the page is not longer loading
+            console.log('loading status is set')
         })
 
         return cleanUp // Cleans up the side effect of every state change
