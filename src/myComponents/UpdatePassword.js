@@ -41,12 +41,12 @@ function UpdatePassword () {
                             <h2 className="text-center mb-4">Change Your Password</h2>
                             {formMessage && <Alert variant="danger">{formMessage}</Alert>}
                             <Form>
-                                <Form.Group className="mb-3" id="login_Form_Password">
+                                <Form.Group className="mb-3" id="update_Password_Form_Password">
                                     <Form.Label>Password</Form.Label>
                                     <Form.Control type="password" placeholder="Enter your new password" ref={updatePasswordRef} required/>
                                 </Form.Group>
 
-                                <Form.Group className="mb-3" id="login_Form_Password">
+                                <Form.Group className="mb-3" id="update_Password_Form_Password_Conf">
                                     <Form.Label>Password Confirmation</Form.Label>
                                     <Form.Control type="password" placeholder="Confirm your new password" ref={updatePasswordConfRef} required/>
                                 </Form.Group>

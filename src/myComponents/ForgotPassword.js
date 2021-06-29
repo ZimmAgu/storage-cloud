@@ -19,6 +19,7 @@ function ForgotPassword() {
         
         resetUserPassword(loginEmailRef.current.value)
             .then(() => {
+                setLoadingStatus(true)
                 setFormMessage('Your password has been reset. Check your mailbox for further instructions');
                 console.log('Password reset');
             })
@@ -37,7 +38,7 @@ function ForgotPassword() {
                             <h2 className="text-center mb-4">Reset Password</h2>
                             {formMessage && <Alert variant="danger">{formMessage}</Alert>}
                             <Form>
-                                <Form.Group className="mb-3" id="login_Form_Email" >
+                                <Form.Group className="mb-3" id="forgot_Password_Form_Email" >
                                     <Form.Label>Email address</Form.Label>
                                     <Form.Control type="email" placeholder="Enter email" ref={loginEmailRef} required/>
                                 </Form.Group>
@@ -48,8 +49,7 @@ function ForgotPassword() {
                             <Link to='./login'>Go back to log in</Link>
                         </div>
                         </Card.Body> 
-                    </Card>
-                    
+                    </Card> 
                 </div>
             </Container>
         </>

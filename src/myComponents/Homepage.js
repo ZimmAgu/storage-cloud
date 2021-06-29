@@ -27,19 +27,19 @@ function Homepage() {
                             </Card.Body>
                             
                             <Link to='./update_email'>
-                                <Button className="w-100 text-center mt-2">
+                                <Button className="w-100 text-center mb-2">
                                     Update Email
                                 </Button>
                             </Link>
                             
                             <Link to='./change_password'>
-                                <Button className="w-100 text-center mt-2">
+                                <Button className="w-100 text-center mt-3 mb-3">
                                     Change Password
                                 </Button>
                             </Link>
                         </Card>
                         <div>
-                            <Button className="w-100 text-center mt-2" onClick={handleLogOut}>
+                            <Button className="w-100 text-center mt-3" onClick={handleLogOut}>
                                 Log Out
                             </Button>
                         </div>

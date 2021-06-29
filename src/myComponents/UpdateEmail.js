@@ -36,11 +36,11 @@ function UpdateEmail () {
                             <h2 className="text-center mb-4">Log In</h2>
                             {formMessage && <Alert variant="danger">{formMessage}</Alert>}
                             <Form>
-                                <Form.Group className="mb-3" id="login_Form_Email" >
+                                <Form.Group className="mb-3" id="update_Email_Form_Email" >
                                     <Form.Label>Email address</Form.Label>
                                     <Form.Control type="email" placeholder="Enter your new email" ref={updateEmailRef} required/>
                                 </Form.Group>
-
+                                
                                 <Button className="w-100 " type="submit" disabled={pageIsLoading}>Update</Button>
                             </Form>
                         </Card.Body>
