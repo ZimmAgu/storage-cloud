@@ -39,6 +39,10 @@ function AuthorizationProvider({children}) { // Whatever props are passed to thi
         return currentUser.updateEmail(email)
     }
 
+    function updateUserPassword(password) {
+        return currentUser.updatePassword(password)
+    }
+
 
 
     useEffect(() => { 
@@ -60,7 +64,8 @@ function AuthorizationProvider({children}) { // Whatever props are passed to thi
         logUserIn,
         logUserOut,
         resetUserPassword,
-        updateUserEmail
+        updateUserEmail,
+        updateUserPassword
     } // This provider will use this to pass the state of the current user to all descendants
 
 
