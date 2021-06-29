@@ -13,8 +13,8 @@ function Homepage() {
         logUserOut().then(() => {
             history.push('./login')
         })
-        
     }
+
 
     return (
         <>
@@ -25,6 +25,18 @@ function Homepage() {
                             <Card.Body>
                                 <h1>Hello {currentUser.email}</h1>
                             </Card.Body>
+                            
+                            <Link to='./update_email'>
+                                <Button className="w-100 text-center mt-2">
+                                    Update Email
+                                </Button>
+                            </Link>
+                            
+                            <Link to='./change_password'>
+                                <Button className="w-100 text-center mt-2">
+                                    Change Password
+                                </Button>
+                            </Link>
                         </Card>
                         <div>
                             <Button className="w-100 text-center mt-2" onClick={handleLogOut}>
