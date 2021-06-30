@@ -16,7 +16,7 @@ function LoginForm () {
     const history = useHistory()
     
     if (currentUser) { // If someone is logged in go straight to the homepage
-        history.push('/user_profile')
+        history.push('/')
     }
 
 
@@ -28,7 +28,7 @@ function LoginForm () {
                 setFormError('');
                 setLoadingStatus(true);
                 console.log('Login successful for: ' + loginEmailRef.current.value)
-                history.push('/user_profile') // Redirects to the root page of the document
+                history.push('/') // Redirects to the root page of the document
             })
             .catch( () => {
                 setFormError('Log in was not successful')

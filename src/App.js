@@ -14,8 +14,8 @@ import UpdateEmail from './AuthComponents/UpdateEmail';
 import UpdatePassword from './AuthComponents/UpdatePassword';
 import UserProfile from './AuthComponents/UserProfile';
 
-// Storage Cloud Imports
-
+// StorageCloud Imports
+import Dashboard from './StorageCloud/Dashboard';
 
 
 function App () {
@@ -25,12 +25,12 @@ function App () {
                 <AuthorizationProvider>
 
                     {/* Storage Cloud Components */}
-                    
+                    <PrivateRoute path="/" component={Dashboard} />
 
                     {/* User Profile Components */}
                     <PrivateRoute path="/user_profile" component={UserProfile} />
 
-                    <PrivateRoute path="/update_email" component={UpdateEmail}/>
+                    <PrivateRoute path="/update_email" component={UpdateEmail} />
                     
                     <PrivateRoute path="/change_password" component={UpdatePassword}/>
 
@@ -40,7 +40,7 @@ function App () {
 
                     <Route path="/login" component={LoginForm} />
 
-                    <Route path="/forgotpassword" component={ForgotPassword}/>
+                    <Route path="/forgotpassword" component={ForgotPassword} />
 
                     
                 </AuthorizationProvider>
