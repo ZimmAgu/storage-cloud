@@ -1,5 +1,5 @@
 import React from 'react';
-import AuthorizationProvider from './firebaseAuth/authorization';
+import AuthorizationProvider from './Firebase/authorization';
 import SignUpForm from './AuthComponents/SignUp';
 import LoginForm from './AuthComponents/Login';
 import Homepage from './AuthComponents/Homepage';
