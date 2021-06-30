@@ -1,8 +1,9 @@
 import {React, useRef, useState} from 'react';
-import {Alert, Button, Card, Container, Form} from 'react-bootstrap'
+import {Alert, Button, Card, Form} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useAuthContext} from '../Firebase/authorization';
 import {Link, useHistory} from 'react-router-dom'
+import CenteredContainer from './CenteredContainer'
 
 function ForgotPassword() {
     // These refs are used so I can get the value of the Email & Passwords in the handle submission function
@@ -30,29 +31,25 @@ function ForgotPassword() {
     }
     
     return (
-        <>
-           <Container className="d-flex justify-content-center align-items-center" style={{minHeight: "100vh"}}>
-                <div className="w-100" style={{maxWidth: "25em"}}>
-                    <Card>
-                        <Card.Body>
-                            <h2 className="text-center mb-4">Reset Password</h2>
-                            {formMessage && <Alert variant="danger">{formMessage}</Alert>}
-                            <Form>
-                                <Form.Group className="mb-3" id="forgot_Password_Form_Email" >
-                                    <Form.Label>Email address</Form.Label>
-                                    <Form.Control type="email" placeholder="Enter email" ref={loginEmailRef} required/>
-                                </Form.Group>
+        <CenteredContainer>
+            <Card>
+                <Card.Body>
+                    <h2 className="text-center mb-4">Reset Password</h2>
+                    {formMessage && <Alert variant="danger">{formMessage}</Alert>}
+                    <Form>
+                        <Form.Group className="mb-3" id="forgot_Password_Form_Email" >
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control type="email" placeholder="Enter email" ref={loginEmailRef} required/>
+                        </Form.Group>
 
-                                <Button className="w-100 " onClick={handlePasswordReset} disabled={pageIsLoading}>Reset Password</Button>
-                            </Form>
-                            <div className="w-100 mt-3 text-center">
-                            <Link to='./login'>Go back to log in</Link>
-                        </div>
-                        </Card.Body> 
-                    </Card> 
+                        <Button className="w-100 " onClick={handlePasswordReset} disabled={pageIsLoading}>Reset Password</Button>
+                    </Form>
+                    <div className="w-100 mt-3 text-center">
+                    <Link to='./login'>Go back to log in</Link>
                 </div>
-            </Container>
-        </>
+                </Card.Body> 
+            </Card> 
+        </CenteredContainer>
     )
 }
 

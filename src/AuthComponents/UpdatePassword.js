@@ -3,6 +3,7 @@ import {Alert, Button, Card, Container, Form} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useAuthContext} from '../Firebase/authorization';
 import {Link} from 'react-router-dom'
+import CenteredContainer from './CenteredContainer'
 
 function UpdatePassword () {
     // These refs are used so I can get the value of the Email & Passwords in the handle submission function
@@ -33,34 +34,30 @@ function UpdatePassword () {
     } 
 
     return (
-        <>
-             <Container className="d-flex justify-content-center align-items-center" style={{minHeight: "100vh"}}>
-                <div className="w-100" style={{maxWidth: "25em"}}>
-                    <Card onSubmit={handleFormSubmission}>
-                        <Card.Body>
-                            <h2 className="text-center mb-4">Change Your Password</h2>
-                            {formMessage && <Alert variant="danger">{formMessage}</Alert>}
-                            <Form>
-                                <Form.Group className="mb-3" id="update_Password_Form_Password">
-                                    <Form.Label>Password</Form.Label>
-                                    <Form.Control type="password" placeholder="Enter your new password" ref={updatePasswordRef} required/>
-                                </Form.Group>
+        <CenteredContainer>
+            <Card onSubmit={handleFormSubmission}>
+                <Card.Body>
+                    <h2 className="text-center mb-4">Change Password</h2>
+                    {formMessage && <Alert variant="danger">{formMessage}</Alert>}
+                    <Form>
+                        <Form.Group className="mb-3" id="update_Password_Form_Password">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type="password" placeholder="Enter your new password" ref={updatePasswordRef} required/>
+                        </Form.Group>
 
-                                <Form.Group className="mb-3" id="update_Password_Form_Password_Conf">
-                                    <Form.Label>Password Confirmation</Form.Label>
-                                    <Form.Control type="password" placeholder="Confirm your new password" ref={updatePasswordConfRef} required/>
-                                </Form.Group>
+                        <Form.Group className="mb-3" id="update_Password_Form_Password_Conf">
+                            <Form.Label>Password Confirmation</Form.Label>
+                            <Form.Control type="password" placeholder="Confirm your new password" ref={updatePasswordConfRef} required/>
+                        </Form.Group>
 
-                                <Button className="w-100 " type="submit" disabled={pageIsLoading}>Change Password</Button>
-                            </Form>
-                        </Card.Body>
-                    </Card>
-                    <div className="w-100 text-center mt-2">
-                        <Link to='./'>Go back</Link>
-                    </div>
-                </div>
-            </Container>
-        </>
+                        <Button className="w-100 " type="submit" disabled={pageIsLoading}>Change Password</Button>
+                    </Form>
+                </Card.Body>
+            </Card>
+            <div className="w-100 text-center mt-2">
+                <Link to='./'>Go back</Link>
+            </div>
+        </CenteredContainer>
     )
 }
 

@@ -1,9 +1,10 @@
 import React from 'react'
 
 import {useAuthContext} from '../Firebase/authorization'
-import {Alert, Button, Card, Container} from 'react-bootstrap'
+import {Button, Card, Container} from 'react-bootstrap'
 import {Link, useHistory} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import CenteredContainer from './CenteredContainer'
 
 function Homepage() {
     const {currentUser, logUserOut} = useAuthContext()
@@ -19,8 +20,7 @@ function Homepage() {
     return (
         <>
             {currentUser &&
-                <Container className="d-flex justify-content-center align-items-center" style={{minHeight: "100vh"}}> 
-                    <div className="w-100" style={{maxWidth: "25em"}}>
+                <CenteredContainer>
                         <Card>
                             <Card.Body>
                                 <h1>Hello {currentUser.email}</h1>
@@ -43,8 +43,7 @@ function Homepage() {
                                 Log Out
                             </Button>
                         </div>
-                    </div>
-                </Container>   
+                </CenteredContainer>
             }        
         </>
     );

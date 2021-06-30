@@ -3,7 +3,7 @@ import {Alert, Button, Card, Container, Form} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useAuthContext} from '../Firebase/authorization';
 import {Link, useHistory} from 'react-router-dom'
-
+import CenteredContainer from './CenteredContainer'
 
 function SignUpForm () {
 
@@ -45,40 +45,36 @@ function SignUpForm () {
     }
 
     return (
-        <>
-            <Container className="d-flex justify-content-center align-items-center" style={{minHeight: "100vh"}}>
-                <div className="w-100" style={{maxWidth: "25em"}}>
-                    <Card onSubmit={handleFormSubmission}>
-                        <Card.Body>
-                            <h2 className="text-center mb-4">Sign Up</h2>
-                            {formError && <Alert variant="danger">{formError}</Alert>}
-                            <Form>
-                                <Form.Group className="mb-3" id="signup_Form_Email" >
-                                    <Form.Label>Email address</Form.Label>
-                                    <Form.Control type="email" placeholder="Enter email" ref={signUpEmailRef} required/>
-                                </Form.Group>
+        <CenteredContainer>
+            <Card onSubmit={handleFormSubmission}>
+                <Card.Body>
+                    <h2 className="text-center mb-4">Sign Up</h2>
+                    {formError && <Alert variant="danger">{formError}</Alert>}
+                    <Form>
+                        <Form.Group className="mb-3" id="signup_Form_Email" >
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control type="email" placeholder="Enter email" ref={signUpEmailRef} required/>
+                        </Form.Group>
 
 
-                                <Form.Group className="mb-3" id="signup_Form_Password">
-                                    <Form.Label>Password</Form.Label>
-                                    <Form.Control type="password" placeholder="Password" ref={signUpPasswordRef} required/>
-                                </Form.Group>
+                        <Form.Group className="mb-3" id="signup_Form_Password">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type="password" placeholder="Password" ref={signUpPasswordRef} required/>
+                        </Form.Group>
 
-                                <Form.Group className="mb-4" id="signup_Password_Confirmation">
-                                    <Form.Label>Password Confirmation</Form.Label>
-                                    <Form.Control type="password" placeholder="Confirm Password" ref={signUpPasswordConfRef} required/>
-                                </Form.Group>
+                        <Form.Group className="mb-4" id="signup_Password_Confirmation">
+                            <Form.Label>Password Confirmation</Form.Label>
+                            <Form.Control type="password" placeholder="Confirm Password" ref={signUpPasswordConfRef} required/>
+                        </Form.Group>
 
-                                <Button className="w-100 " type="submit" disabled={pageIsLoading}>Sign Up</Button>
-                            </Form>
-                        </Card.Body>
-                    </Card>
-                    <div className="w-100 text-center mt-2">
-                        Already have an account? <Link to="./login">Log in</Link>
-                    </div>
-                </div>
-            </Container>
-        </>
+                        <Button className="w-100 " type="submit" disabled={pageIsLoading}>Sign Up</Button>
+                    </Form>
+                </Card.Body>
+            </Card>
+            <div className="w-100 text-center mt-2">
+                Already have an account? <Link to="./login">Log in</Link>
+            </div>
+        </CenteredContainer>
     )
 }
 

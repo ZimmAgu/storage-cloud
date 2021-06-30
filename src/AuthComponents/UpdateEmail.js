@@ -3,6 +3,7 @@ import {Alert, Button, Card, Container, Form} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useAuthContext} from '../Firebase/authorization';
 import {Link} from 'react-router-dom'
+import CenteredContainer from './CenteredContainer'
 
 function UpdateEmail () {
     // These refs are used so I can get the value of the Email & Passwords in the handle submission function
@@ -28,29 +29,25 @@ function UpdateEmail () {
 
 
     return (
-        <>
-            <Container className="d-flex justify-content-center align-items-center" style={{minHeight: "100vh"}}>
-                <div className="w-100" style={{maxWidth: "25em"}}>
-                    <Card onSubmit={handleFormSubmission}>
-                        <Card.Body>
-                            <h2 className="text-center mb-4">Log In</h2>
-                            {formMessage && <Alert variant="danger">{formMessage}</Alert>}
-                            <Form>
-                                <Form.Group className="mb-3" id="update_Email_Form_Email" >
-                                    <Form.Label>Email address</Form.Label>
-                                    <Form.Control type="email" placeholder="Enter your new email" ref={updateEmailRef} required/>
-                                </Form.Group>
-                                
-                                <Button className="w-100 " type="submit" disabled={pageIsLoading}>Update</Button>
-                            </Form>
-                        </Card.Body>
-                    </Card>
-                    <div className="w-100 text-center mt-2">
-                        <Link to='./'>Go back</Link>
-                    </div>
-                </div>
-            </Container>
-        </>
+        <CenteredContainer>
+            <Card onSubmit={handleFormSubmission}>
+                <Card.Body>
+                    <h2 className="text-center mb-4">Update Email</h2>
+                    {formMessage && <Alert variant="danger">{formMessage}</Alert>}
+                    <Form>
+                        <Form.Group className="mb-3" id="update_Email_Form_Email" >
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control type="email" placeholder="Enter your new email" ref={updateEmailRef} required/>
+                        </Form.Group>
+                        
+                        <Button className="w-100 " type="submit" disabled={pageIsLoading}>Update</Button>
+                    </Form>
+                </Card.Body>
+            </Card>
+            <div className="w-100 text-center mt-2">
+                <Link to='./'>Go back</Link>
+            </div>
+        </CenteredContainer>
     )
 }
 
