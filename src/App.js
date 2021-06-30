@@ -1,6 +1,11 @@
+// React Imports
 import React from 'react';
-import AuthorizationProvider from './Firebase/authorization';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+
+//Firebase Imports
+import AuthorizationProvider from './Firebase/authorization';
+
+// AuthComponent Imports
 import ForgotPassword from './AuthComponents/ForgotPassword';
 import LoginForm from './AuthComponents/Login';
 import PrivateRoute from './AuthComponents/PrivateRoute';
@@ -8,6 +13,8 @@ import SignUpForm from './AuthComponents/SignUp';
 import UpdateEmail from './AuthComponents/UpdateEmail';
 import UpdatePassword from './AuthComponents/UpdatePassword';
 import UserProfile from './AuthComponents/UserProfile';
+
+// Storage Cloud Imports
 
 
 

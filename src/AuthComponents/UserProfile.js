@@ -1,7 +1,7 @@
 import React from 'react'
 
 import {useAuthContext} from '../Firebase/authorization'
-import {Button, Card, Container} from 'react-bootstrap'
+import {Button, Card} from 'react-bootstrap'
 import {Link, useHistory} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CenteredContainer from './CenteredContainer'
