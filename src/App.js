@@ -1,12 +1,12 @@
 import React from 'react';
 import AuthorizationProvider from './firebaseAuth/authorization';
-import SignUpForm from './myComponents/SignUp';
-import LoginForm from './myComponents/Login';
-import Homepage from './myComponents/Homepage';
-import PrivateRoute from './myComponents/PrivateRoute';
-import ForgotPassword from './myComponents/ForgotPassword';
-import UpdateEmail from './myComponents/UpdateEmail';
-import UpdatePassword from './myComponents/UpdatePassword';
+import SignUpForm from './AuthComponents/SignUp';
+import LoginForm from './AuthComponents/Login';
+import Homepage from './AuthComponents/Homepage';
+import PrivateRoute from './AuthComponents/PrivateRoute';
+import ForgotPassword from './AuthComponents/ForgotPassword';
+import UpdateEmail from './AuthComponents/UpdateEmail';
+import UpdatePassword from './AuthComponents/UpdatePassword';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 

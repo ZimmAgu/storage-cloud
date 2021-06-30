@@ -2,12 +2,12 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 
 const firebaseApp = firebase.initializeApp({
-    apiKey: "AIzaSyBqdXCsI-Rmbe51gvg9j0OsmJ-HgAidWXQ",
-    authDomain: "login-form-development.firebaseapp.com",
-    projectId: "login-form-development",
-    storageBucket: "login-form-development.appspot.com",
-    messagingSenderId: "1090172738170",
-    appId: "1:1090172738170:web:2f505686bb41fbfab0f9c3"
+    apiKey: "AIzaSyA_lfo98ieo8aYKd_AnevfOhbZm5G5qJsU",
+    authDomain: "storage-cloud-e3b61.firebaseapp.com",
+    projectId: "storage-cloud-e3b61",
+    storageBucket: "storage-cloud-e3b61.appspot.com",
+    messagingSenderId: "946087568595",
+    appId: "1:946087568595:web:9c5d9c47583d2411c06026"
 })
 
 export const auth = firebaseApp.auth()
