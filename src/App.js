@@ -1,36 +1,35 @@
 import React from 'react';
 import AuthorizationProvider from './Firebase/authorization';
-import SignUpForm from './AuthComponents/SignUp';
-import LoginForm from './AuthComponents/Login';
-import Homepage from './AuthComponents/Homepage';
-import PrivateRoute from './AuthComponents/PrivateRoute';
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import ForgotPassword from './AuthComponents/ForgotPassword';
+import LoginForm from './AuthComponents/Login';
+import PrivateRoute from './AuthComponents/PrivateRoute';
+import SignUpForm from './AuthComponents/SignUp';
 import UpdateEmail from './AuthComponents/UpdateEmail';
 import UpdatePassword from './AuthComponents/UpdatePassword';
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import UserProfile from './AuthComponents/UserProfile';
+
 
 
 function App () {
     return (
-        <>
-            <Router>
-                <Switch>
-                    <AuthorizationProvider>
-                        <PrivateRoute exact path="/" component={Homepage} />
+        <Router>
+            <Switch>
+                <AuthorizationProvider>
+                    <PrivateRoute path="/user_profile" component={UserProfile} />
 
-                        <Route path="/signup" component={SignUpForm} />
+                    <Route path="/signup" component={SignUpForm} />
 
-                        <Route path="/login" component={LoginForm} />
+                    <Route path="/login" component={LoginForm} />
 
-                        <Route path="/forgotpassword" component={ForgotPassword}/>
+                    <Route path="/forgotpassword" component={ForgotPassword}/>
 
-                        <PrivateRoute path="/update_email" component={UpdateEmail}/>
-                        
-                        <PrivateRoute path="/change_password" component={UpdatePassword}/>
-                    </AuthorizationProvider>
-                </Switch>
-            </Router>
-        </>
+                    <PrivateRoute path="/update_email" component={UpdateEmail}/>
+                    
+                    <PrivateRoute path="/change_password" component={UpdatePassword}/>
+                </AuthorizationProvider>
+            </Switch>
+        </Router>
     );
 }
 

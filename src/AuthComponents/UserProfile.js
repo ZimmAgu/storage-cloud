@@ -6,7 +6,7 @@ import {Link, useHistory} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CenteredContainer from './CenteredContainer'
 
-function Homepage() {
+function UserProfile() {
     const {currentUser, logUserOut} = useAuthContext()
     const history = useHistory();
 
@@ -49,4 +49,4 @@ function Homepage() {
     );
 }
 
-export default Homepage
+export default UserProfile

@@ -55,7 +55,7 @@ function UpdatePassword () {
                 </Card.Body>
             </Card>
             <div className="w-100 text-center mt-2">
-                <Link to='./'>Go back</Link>
+                <Link to='./user_profile'>Go back</Link>
             </div>
         </CenteredContainer>
     )

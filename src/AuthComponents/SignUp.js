@@ -34,7 +34,7 @@ function SignUpForm () {
                 setFormError('');
                 setLoadingStatus(true);
                 console.log('The sign up was a success'); 
-                history.push('/') // Redirects to the root page of the document
+                history.push('/user_profile') // Redirects to the root page of the document
             })
             .catch(() => {
                 setFormError('Sign in did not work');
