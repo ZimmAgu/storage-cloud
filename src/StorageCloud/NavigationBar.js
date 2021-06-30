@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 
 function NavigationBar() {
     return (
-        <Navbar bg="light" expand='sm'>
+        <Navbar bg="light" expand={'sm' | 'md' | 'lg' | 'xl'}>
             <Navbar.Brand>
                 <Link to='./' style={{ color:'black', textDecoration: 'none' }}>
                     ZA Cloud
