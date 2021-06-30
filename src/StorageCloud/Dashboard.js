@@ -1,6 +1,7 @@
 import React from 'react'
-import NavigationBar from './NavigationBar'
 import {Container} from 'react-bootstrap'
+import AddFolderButton from './AddFolderButton'
+import NavigationBar from './NavigationBar'
 
 
 function Dashboard() {
@@ -9,7 +10,7 @@ function Dashboard() {
             <NavigationBar/>
 
             <Container fluid>
-                This is where stuff will go
+                <AddFolderButton/>
             </Container>
         </>
     )
