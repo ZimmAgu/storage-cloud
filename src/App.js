@@ -16,17 +16,26 @@ function App () {
         <Router>
             <Switch>
                 <AuthorizationProvider>
+
+                    {/* Storage Cloud Components */}
+                    
+
+                    {/* User Profile Components */}
                     <PrivateRoute path="/user_profile" component={UserProfile} />
 
+                    <PrivateRoute path="/update_email" component={UpdateEmail}/>
+                    
+                    <PrivateRoute path="/change_password" component={UpdatePassword}/>
+
+
+                    {/* Authentication Routes */}
                     <Route path="/signup" component={SignUpForm} />
 
                     <Route path="/login" component={LoginForm} />
 
                     <Route path="/forgotpassword" component={ForgotPassword}/>
 
-                    <PrivateRoute path="/update_email" component={UpdateEmail}/>
                     
-                    <PrivateRoute path="/change_password" component={UpdatePassword}/>
                 </AuthorizationProvider>
             </Switch>
         </Router>
