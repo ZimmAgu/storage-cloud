@@ -1,7 +1,15 @@
-import {React, useState, useRef} from 'react'
+// React Imports 
+import {React, useState} from 'react'
 import {Button, Form, Modal} from 'react-bootstrap'
+
+//Firebase Imports
+import {userCollections} from '../Firebase/firebase'
+
+// Font Awesome Icon Imports
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFolderPlus, faTimes } from '@fortawesome/free-solid-svg-icons'
+
+
 
 function AddFolderButton() {
     const [show, setShow] = useState(false); // Used to show and hide the modal
@@ -17,6 +25,7 @@ function AddFolderButton() {
 
     function handleSubmission (event) {
         event.preventDefault()
+        userCollections.folders.add({folderName})
         setFolderName('')
         handleClose()
     }
