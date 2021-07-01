@@ -1,5 +1,5 @@
 import {React, useState} from 'react'
-import {Button, Modal} from 'react-bootstrap'
+import {Button, Form, Modal} from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFolderPlus } from '@fortawesome/free-solid-svg-icons'
 
@@ -15,7 +15,17 @@ function AddFolderButton() {
                 <FontAwesomeIcon icon={faFolderPlus} />
             </Button>
 
-            <Modal show={show} onHide={handleClose}>yo</Modal>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Body>
+                    <Form>       
+                        <Form.Group>
+                            <Form.Label>New Folder</Form.Label>
+                            <Form.Control type="text" placeholder="Enter the name of your folder"></Form.Control>
+                        </Form.Group>
+                    </Form>    
+                </Modal.Body>
+                <Modal.Footer></Modal.Footer>
+            </Modal>
         </>
     )
 }
