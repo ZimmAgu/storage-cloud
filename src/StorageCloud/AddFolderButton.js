@@ -4,6 +4,7 @@ import {Button, Form, Modal} from 'react-bootstrap'
 
 //Firebase Imports
 import {userCollections} from '../Firebase/firebase'
+import { useAuthContext } from '../Firebase/authorization'
 
 // Font Awesome Icon Imports
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -13,21 +14,26 @@ import { faFolderPlus, faTimes } from '@fortawesome/free-solid-svg-icons'
 
 function AddFolderButton() {
     const [show, setShow] = useState(false); // Used to show and hide the modal
-    const [folderName, setFolderName] = useState('') // Sets the name of the folder
-
+    const [folderName, setFolderName] = useState(''); // Sets the name of the folder
+    const { currentUser } = useAuthContext();
 
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
 
     function handleInputChange (event) { // Changes the value of the create folder input every time the user enters in a character
-        setFolderName(event.target.value)
+        setFolderName(event.target.value);
     }
 
     function handleSubmission (event) {
-        event.preventDefault()
-        userCollections.folders.add({folderName})
-        setFolderName('')
-        handleClose()
+        event.preventDefault();
+
+        userCollections.folders.add({
+            Name: folderName,       // Name of the folder
+            User: currentUser.uid   // Id of the user that created the folder
+        })
+
+        setFolderName('');
+        handleClose();
     }
     
     return (
