@@ -22,7 +22,7 @@ function UserProfile() {
             {currentUser &&
                 <CenteredContainer>
                         <Card>
-                            <Card.Body>
+                            <Card.Body className="text-center">
                                 <h1>Hello {currentUser.email}</h1>
                             </Card.Body>
                             

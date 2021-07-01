@@ -10,7 +10,7 @@ function Dashboard() {
             <NavigationBar/>
 
             <Container fluid>
-                <AddFolderButton/>
+                <AddFolderButton />
             </Container>
         </>
     )

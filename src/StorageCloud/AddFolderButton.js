@@ -1,5 +1,7 @@
 import {React, useState} from 'react'
 import {Button, Modal} from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFolderPlus } from '@fortawesome/free-solid-svg-icons'
 
 function AddFolderButton() {
     const [show, setShow] = useState();
@@ -9,8 +11,8 @@ function AddFolderButton() {
     
     return (
         <>
-            <Button variant='outline-primary' onClick={handleShow}>
-                This is my button
+            <Button variant='outline-primary' onClick={handleShow} size='md'>
+                <FontAwesomeIcon icon={faFolderPlus} />
             </Button>
 
             <Modal show={show} onHide={handleClose}>yo</Modal>
