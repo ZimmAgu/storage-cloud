@@ -29,7 +29,8 @@ function AddFolderButton() {
 
         userCollections.folders.add({
             Name: folderName,       // Name of the folder
-            User: currentUser.uid   // Id of the user that created the folder
+            User: currentUser.uid,   // Id of the user that created the folder
+            CreatedAt: userCollections.timeStamp()
         })
 
         setFolderName('');

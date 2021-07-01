@@ -16,7 +16,8 @@ const firestorage = firebaseApp.firestore();
 
 const userCollections = {
     folders: firestorage.collection('folders'),
-    files: firestorage.collection('files')
+    files: firestorage.collection('files'),
+    timeStamp: firebase.firestore.FieldValue.serverTimestamp
 }
 
 export default firebaseApp;
