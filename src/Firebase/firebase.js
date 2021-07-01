@@ -1,5 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/firestore';
 
 const firebaseApp = firebase.initializeApp({
     apiKey: "AIzaSyA_lfo98ieo8aYKd_AnevfOhbZm5G5qJsU",
@@ -10,8 +11,16 @@ const firebaseApp = firebase.initializeApp({
     appId: "1:946087568595:web:9c5d9c47583d2411c06026"
 })
 
-export const auth = firebaseApp.auth()
+const auth = firebaseApp.auth();
+const firestorage = firebaseApp.firestore();
+
+const userCollections = {
+    folders: firestorage.collection('folders'),
+    files: firestorage.collection('files')
+}
+
 export default firebaseApp;
+export {auth, userCollections}
 
 
 
