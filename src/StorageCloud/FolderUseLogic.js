@@ -1,4 +1,5 @@
 import React, { useEffect, useReducer } from 'react'
+import { userCollections } from '../Firebase/firebase'
 
 
 const RootFolder = { // This is where the user will be when the user first logs in. It is given the properties to mimic an actual folder
@@ -62,6 +63,24 @@ function FolderUseLogic (folder = null, folderId = null) {
 
             return dispatch;
         }
+
+        userCollections.folders.doc(folderId).get() // Retrieves the current folder based on its id
+            .then(doc => {
+                console.log('Document data: ' + JSON.stringify(doc.data()));
+
+                dispatch({ 
+                    type: ACTION.UPDATEFOLDER,     
+                    payload: { folder: JSON.stringify(doc.data()) } 
+                })
+            })
+            .catch (() => { // If the current folder can not be retrieved, then it is returnd back to the root folder
+                dispatch({ 
+                    type: ACTION.UPDATEFOLDER,     
+                    payload: { folder: RootFolder } 
+                })
+            })
+
+            
     }, [folderId]) // Runs any times the folder id or the folder changes
 
     return state;

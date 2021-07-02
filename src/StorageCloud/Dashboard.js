@@ -6,7 +6,8 @@ import {FolderUseLogic} from './FolderUseLogic'
 
 
 function Dashboard() {
-    const {folder} = FolderUseLogic()
+    const { folder } = FolderUseLogic('', 'nvn5Q32KrOawyF4xpHyl')
+    console.log(folder)
 
     return (
         <>
