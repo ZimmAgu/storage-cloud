@@ -27,6 +27,7 @@ function AddFolderButton({currentFolder}) {
     function handleSubmission (event) {
         event.preventDefault();
 
+
         userCollections.folders.add({
             name: folderName,                       // Name of the folder
             userId: currentUser.uid,                // Id of the user that created the folder

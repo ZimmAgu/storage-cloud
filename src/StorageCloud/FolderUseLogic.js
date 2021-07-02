@@ -66,11 +66,16 @@ function FolderUseLogic (folder = null, folderId = null) {
 
         userCollections.folders.doc(folderId).get() // Retrieves the current folder based on its id
             .then(doc => {
-                console.log('Document data: ' + JSON.stringify(doc.data()));
+                const docData = {
+                    id: doc.id,
+                    ...doc.data()
+                }
+
+                console.log('Document data: ' + JSON.stringify(docData));
 
                 dispatch({ 
                     type: ACTION.UPDATEFOLDER,     
-                    payload: { folder: JSON.stringify(doc.data()) } 
+                    payload: { folder: docData } 
                 })
             })
             .catch (() => { // If the current folder can not be retrieved, then it is returnd back to the root folder

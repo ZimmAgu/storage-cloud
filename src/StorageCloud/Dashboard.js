@@ -7,7 +7,7 @@ import {FolderUseLogic} from './FolderUseLogic'
 
 function Dashboard() {
     const { folder } = FolderUseLogic('', 'nvn5Q32KrOawyF4xpHyl')
-    console.log(folder)
+    console.log('Folder from dashboard: ' + folder)
 
     return (
         <>
