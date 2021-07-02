@@ -12,7 +12,7 @@ import { faFolderPlus, faTimes } from '@fortawesome/free-solid-svg-icons'
 
 
 
-function AddFolderButton() {
+function AddFolderButton({currentFolder}) {
     const [show, setShow] = useState(false); // Used to show and hide the modal
     const [folderName, setFolderName] = useState(''); // Sets the name of the folder
     const { currentUser } = useAuthContext();
@@ -28,9 +28,10 @@ function AddFolderButton() {
         event.preventDefault();
 
         userCollections.folders.add({
-            Name: folderName,                       // Name of the folder
-            UserId: currentUser.uid,                // Id of the user that created the folder
-            CreatedAt: userCollections.timeStamp()  // Exact time when the folder was created
+            name: folderName,                       // Name of the folder
+            userId: currentUser.uid,                // Id of the user that created the folder
+            parentFolderId: currentFolder.id,       // Id of the folder that is the direct parent of the current folder 
+            createdAt: userCollections.timeStamp()  // Exact time when the folder was created
         })
 
         setFolderName('');
