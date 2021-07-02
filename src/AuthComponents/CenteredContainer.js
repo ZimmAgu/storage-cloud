@@ -1,5 +1,5 @@
 import React from 'react'
-import {Container} from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 
 function CenteredContainer( {children} ) { //Adds the centering format so the rest of the program can look more clean and concise
     return (

@@ -1,8 +1,8 @@
-import {React, useRef, useState} from 'react';
-import {Alert, Button, Card, Form} from 'react-bootstrap'
+import React, { useRef, useState } from 'react';
+import { Alert, Button, Card, Form } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {useAuthContext} from '../Firebase/authorization';
-import {Link, useHistory} from 'react-router-dom'
+import { useAuthContext } from '../Firebase/authorization';
+import { Link, useHistory } from 'react-router-dom'
 import CenteredContainer from './CenteredContainer'
 
 function ForgotPassword() {

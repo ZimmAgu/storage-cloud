@@ -1,9 +1,9 @@
 // React Imports 
-import {React, useState} from 'react'
-import {Button, Form, Modal} from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Button, Form, Modal } from 'react-bootstrap'
 
 //Firebase Imports
-import {userCollections} from '../Firebase/firebase'
+import { userCollections } from '../Firebase/firebase'
 import { useAuthContext } from '../Firebase/authorization'
 
 // Font Awesome Icon Imports
@@ -28,9 +28,9 @@ function AddFolderButton() {
         event.preventDefault();
 
         userCollections.folders.add({
-            Name: folderName,       // Name of the folder
-            User: currentUser.uid,   // Id of the user that created the folder
-            CreatedAt: userCollections.timeStamp()
+            Name: folderName,                       // Name of the folder
+            UserId: currentUser.uid,                // Id of the user that created the folder
+            CreatedAt: userCollections.timeStamp()  // Exact time when the folder was created
         })
 
         setFolderName('');

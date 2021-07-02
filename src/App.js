@@ -1,6 +1,6 @@
 // React Imports
 import React from 'react';
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 //Firebase Imports
 import AuthorizationProvider from './Firebase/authorization';
