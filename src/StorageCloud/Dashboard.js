@@ -1,10 +1,16 @@
+// React Imports
 import React from 'react'
 import { Container } from 'react-bootstrap'
+import { useParams } from "react-router-dom";
+
+// Storage Cloud Imports
 import AddFolderButton from './AddFolderButton'
 import NavigationBar from './NavigationBar'
-import {FolderUseLogic} from '../Folders/FolderUseLogic'
+
+// Folders Imports
+import { FolderUseLogic} from '../Folders/FolderUseLogic'
 import Folder from '../Folders/Folder'
-import { useParams } from "react-router-dom";
+import Breadcrumbs from '../Folders/Breadcrumbs';
   
 
 function Dashboard() {
@@ -20,8 +26,10 @@ function Dashboard() {
             
 
             <Container fluid>
+                <div className='d-flex'>
+                <Breadcrumbs currentFolder={folder}/>
                 <AddFolderButton currentFolder={folder}/>
-                
+                </div>
                 {childFolders.length > 0 && (
                     <div className="d-flex flex-wrap">
                         {childFolders.map(doc => ( 
