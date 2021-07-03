@@ -105,6 +105,8 @@ function FolderUseLogic (folder = null, folderId = null) {
             // .orderBy('createdAt')                       // Sorts data from oldest to newest
             .onSnapshot(querySnapshot => {
 
+                const children = []
+
                 querySnapshot.forEach(doc => {
                     const docData = {
                         id: doc.id,
@@ -113,15 +115,15 @@ function FolderUseLogic (folder = null, folderId = null) {
 
                    console.log('Doc from snapshot:\n' + JSON.stringify(docData)) 
 
-                    dispatch({
-                        type: ACTION.SETCHILDFOLDERS,
-                        payload: { childFolders: docData }
-                    })
-
+                    children.push(docData)
+                    
                 }) 
-            })   
-
-      
+                
+                dispatch({
+                    type: ACTION.SETCHILDFOLDERS,
+                    payload: { childFolders: children }
+                })
+            })      
     }, [currentUser, folderId])// Runs any times the current user or folder id changes
 
     

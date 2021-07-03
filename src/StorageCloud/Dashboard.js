@@ -8,8 +8,11 @@ import Folder from './Folder'
 
 function Dashboard() {
     const { folder, childFolders } = FolderUseLogic('', 'nvn5Q32KrOawyF4xpHyl')
-    console.log('Folder from dashboard: ' + JSON.stringify(folder))
-    console.log('Child Folder from dashboard: ' + JSON.stringify(childFolders))
+    // console.log('Folder from dashboard: ' + JSON.stringify(folder))
+    console.log('Child Folder from dashboard: ' + childFolders.length)
+
+    const child = childFolders[1]
+    console.log(child)
 
     return (
         <>
@@ -18,20 +21,7 @@ function Dashboard() {
 
             <Container fluid>
                 <AddFolderButton currentFolder={folder}/>
-                {childFolders.length > 0 && (
-                    <div className="d-flex flex-wrap">
-                        {childFolders.map(doc => {
-                            <div
-                                key={doc.id}
-                                style={{maxWidth:"25em"}}
-                                className="p-2"
-                            >
-                                <Folder folder={doc}/>
-                            </div>
-                        })}
-                    </div>
-                )}
-
+                {childFolders.length > 0 && <Folder folder={child}/> }
             </Container>
         </>
     )
