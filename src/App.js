@@ -26,6 +26,8 @@ function App () {
 
                     {/* Storage Cloud Components */}
                     <PrivateRoute exact path="/" component={Dashboard} />
+                    <PrivateRoute exact path="/folder/:folderId" component={Dashboard} />
+
 
 
                     {/* User Profile Components */}

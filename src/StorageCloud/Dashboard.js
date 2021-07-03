@@ -4,10 +4,13 @@ import AddFolderButton from './AddFolderButton'
 import NavigationBar from './NavigationBar'
 import {FolderUseLogic} from './FolderUseLogic'
 import Folder from './Folder'
-
+import { useParams } from "react-router-dom";
+  
 
 function Dashboard() {
-    const { folder, childFolders } = FolderUseLogic('', 'nvn5Q32KrOawyF4xpHyl')
+    const { folderId } = useParams()
+    console.log(folderId)
+    const { folder, childFolders } = FolderUseLogic(null, folderId)
 
 
 

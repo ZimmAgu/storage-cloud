@@ -6,7 +6,7 @@ function NavigationBar() {
     return (
         <Navbar bg="light" expand={'sm' | 'md' | 'lg' | 'xl'}>
             <Navbar.Brand>
-                <Link to='./' style={{ color:'black', textDecoration: 'none' }}>
+                <Link to='/' style={{ color:'black', textDecoration: 'none' }}>
                     ZA Cloud
                 </Link>
             </Navbar.Brand>
