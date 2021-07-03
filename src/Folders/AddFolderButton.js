@@ -6,13 +6,16 @@ import { Button, Form, Modal } from 'react-bootstrap'
 import { userCollections } from '../Firebase/firebase'
 import { useAuthContext } from '../Firebase/authorization'
 
+// Folders Imports
+import { RootFolder } from './FolderUseLogic'
+
 // Font Awesome Icon Imports
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFolderPlus, faTimes } from '@fortawesome/free-solid-svg-icons'
 
 
 
-function AddFolderButton({currentFolder}) {
+function AddFolderButton({ currentFolder }) {
     const [show, setShow] = useState(false); // Used to show and hide the modal
     const [folderName, setFolderName] = useState(''); // Sets the name of the folder
     const { currentUser } = useAuthContext();
@@ -27,12 +30,24 @@ function AddFolderButton({currentFolder}) {
     function handleSubmission (event) {
         event.preventDefault();
 
+        if (currentFolder == null) return;
+
+        const folderPath = [...currentFolder.path];
+
+        if (currentFolder !== RootFolder) {
+            folderPath.push({
+                name: currentFolder.name,
+                id: currentFolder.id
+            })
+        }
+
 
         userCollections.folders.add({
-            name: folderName,                       // Name of the folder
-            userId: currentUser.uid,                // Id of the user that created the folder
-            parentFolderId: currentFolder.id,       // Id of the folder that is the direct parent of the current folder 
-            createdAt: userCollections.timeStamp()  // Exact time when the folder was created
+            name: folderName,                           // Name of the folder
+            userId: currentUser.uid,                    // Id of the user that created the folder
+            parentFolderId: currentFolder.id,           // Id of the folder that is the direct parent of the current folder 
+            createdAt: userCollections.timeStamp(),     // Exact time when the folder was created
+            path: folderPath                            // The path of all of the folders that came before the current folder
         })
 
         setFolderName('');

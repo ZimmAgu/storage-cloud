@@ -4,7 +4,7 @@ import { Container } from 'react-bootstrap'
 import { useParams } from "react-router-dom";
 
 // Storage Cloud Imports
-import AddFolderButton from './AddFolderButton'
+import AddFolderButton from '../Folders/AddFolderButton'
 import NavigationBar from './NavigationBar'
 
 // Folders Imports
@@ -26,9 +26,9 @@ function Dashboard() {
             
 
             <Container fluid>
-                <div className='d-flex'>
-                <Breadcrumbs currentFolder={folder}/>
-                <AddFolderButton currentFolder={folder}/>
+                <div className='d-flex mt-2'>
+                    <Breadcrumbs currentFolder={folder}/>
+                    <AddFolderButton currentFolder={folder}/>
                 </div>
                 {childFolders.length > 0 && (
                     <div className="d-flex flex-wrap">

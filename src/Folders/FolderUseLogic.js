@@ -130,4 +130,4 @@ function FolderUseLogic (folder = null, folderId = null) {
     return state;
 }
 
-export  { FolderUseLogic}
+export  { FolderUseLogic, RootFolder}
