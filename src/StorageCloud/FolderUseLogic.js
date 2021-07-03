@@ -64,7 +64,7 @@ function FolderUseLogic (folder = null, folderId = null) {
 
 
     useEffect (() => { // Gives the program information about the folder before the folder loads. That way the breadcrumbs, child folders, & child files can load before the folder itself loads
-        if (folder == null) {
+        if (folderId == null) {
             dispatch({ 
                 type: ACTION.UPDATEFOLDER,     
                 payload: { folder: RootFolder } // When the user is not in any real folder, they are in the root folder
