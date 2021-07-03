@@ -2,8 +2,8 @@ import React from 'react'
 import { Container } from 'react-bootstrap'
 import AddFolderButton from './AddFolderButton'
 import NavigationBar from './NavigationBar'
-import {FolderUseLogic} from './FolderUseLogic'
-import Folder from './Folder'
+import {FolderUseLogic} from '../Folders/FolderUseLogic'
+import Folder from '../Folders/Folder'
 import { useParams } from "react-router-dom";
   
 
