@@ -25,7 +25,8 @@ function App () {
                 <AuthorizationProvider>
 
                     {/* Storage Cloud Components */}
-                    <PrivateRoute path="/" component={Dashboard} />
+                    <PrivateRoute exact path="/" component={Dashboard} />
+
 
                     {/* User Profile Components */}
                     <PrivateRoute path="/user_profile" component={UserProfile} />
