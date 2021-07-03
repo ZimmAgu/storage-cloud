@@ -20,8 +20,10 @@ function AddFolderButton({ currentFolder }) {
     const [folderName, setFolderName] = useState(''); // Sets the name of the folder
     const { currentUser } = useAuthContext();
 
+
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
+
 
     function handleInputChange (event) { // Changes the value of the create folder input every time the user enters in a character
         setFolderName(event.target.value);
@@ -32,9 +34,9 @@ function AddFolderButton({ currentFolder }) {
 
         if (currentFolder == null) return;
 
-        const folderPath = [...currentFolder.path];
+        const folderPath = [...currentFolder.path];     // Stores all of the previous folders and their
 
-        if (currentFolder !== RootFolder) {
+        if (currentFolder !== RootFolder) {             // Pushes the nmame and id of the current folder to the folderPath array
             folderPath.push({
                 name: currentFolder.name,
                 id: currentFolder.id
