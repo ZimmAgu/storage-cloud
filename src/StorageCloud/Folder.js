@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Button from 'react-bootstrap/Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFolder } from '@fortawesome/free-solid-svg-icons'
 
@@ -7,9 +8,11 @@ import { faFolder } from '@fortawesome/free-solid-svg-icons'
 function Folder({folder}) {
     return (
         <>
-            <Link to='./'>
-                <FontAwesomeIcon icon={faFolder} style={{ marginRight: "0.5em" }}/>
-                {folder.name}
+            <Link to={`/folder/${folder.id}`} style={{textDecoration: 'none'}}>
+                <Button variant="outline-secondary"  className="text-truncate w-100" style={{ textAlign: "left" }}>
+                    <FontAwesomeIcon icon={faFolder} style={{ marginRight: "0.5em" }}/>
+                    {folder.name}
+                </Button>
             </Link>
         </>
     )

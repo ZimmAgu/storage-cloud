@@ -8,8 +8,7 @@ import Folder from './Folder'
 
 function Dashboard() {
     const { folder, childFolders } = FolderUseLogic('', 'nvn5Q32KrOawyF4xpHyl')
-    // console.log('Folder from dashboard: ' + JSON.stringify(folder))
-    console.log('Child Folder from dashboard: ' + childFolders.length)
+
 
 
     return (
@@ -25,7 +24,7 @@ function Dashboard() {
                         {childFolders.map(doc => ( 
                             <div
                                 key={doc.id}
-                                style={{ maxWidth:'16em' }}
+                                style={{ minWidth:'10em', maxWidth:'10em' }}
                                 className='p-2'
                             >
                                 <Folder folder={doc}/>

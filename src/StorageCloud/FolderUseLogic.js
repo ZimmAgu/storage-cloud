@@ -102,7 +102,7 @@ function FolderUseLogic (folder = null, folderId = null) {
         return userCollections.folders
             .where('parentFolderId', '==', folderId)
             .where('userId', '==', currentUser.uid)     // Searches only for folders that belong to the current use logged in
-            // .orderBy('createdAt')                       // Sorts data from oldest to newest
+            .orderBy('createdAt')                       // Sorts data from oldest to newest
             .onSnapshot(querySnapshot => {
 
                 const children = []
@@ -113,7 +113,6 @@ function FolderUseLogic (folder = null, folderId = null) {
                         ...doc.data()
                     }
 
-                   console.log('Doc from snapshot:\n' + JSON.stringify(docData)) 
 
                     children.push(docData)
                     
