@@ -1,5 +1,6 @@
 import React, { useEffect, useReducer } from 'react'
 import { userCollections } from '../Firebase/firebase'
+import {useAuthContext} from '../Firebase/authorization'
 
 
 const RootFolder = { // This is where the user will be when the user first logs in. It is given the properties to mimic an actual folder
@@ -12,7 +13,8 @@ const RootFolder = { // This is where the user will be when the user first logs 
 
 const ACTION = { // All of the actions are put in constants for reusability to avoid typos
     SELECTFOLDER: 'SelectFolder',
-    UPDATEFOLDER: 'UpdateFolder'
+    UPDATEFOLDER: 'UpdateFolder',
+    SETCHILDFOLDERS: 'SETChildFolders'
 }
 
 
@@ -31,6 +33,11 @@ function reducer (state, { type, payload }) {
                 ...state,
                 folder: payload.folder
             }
+        case ACTION.SETCHILDFOLDERS:
+            return {
+                ...state,
+                childFolders: payload.childFolders
+            }
         default: // Returns the current state if you use an ACTION that doesn't exist
             return state
     }
@@ -39,6 +46,8 @@ function reducer (state, { type, payload }) {
 
 
 function FolderUseLogic (folder = null, folderId = null) {
+    const { currentUser } = useAuthContext(); 
+
     const [state, dispatch] = useReducer(reducer, {
         folder,
         folderId,
@@ -86,7 +95,36 @@ function FolderUseLogic (folder = null, folderId = null) {
             })
 
             
-    }, [folderId]) // Runs any times the folder id or the folder changes
+    }, [folderId]) // Runs any times the folder id changes
+
+
+    useEffect (() => {
+        return userCollections.folders
+            .where('parentFolderId', '==', folderId)
+            .where('userId', '==', currentUser.uid)     // Searches only for folders that belong to the current use logged in
+            // .orderBy('createdAt')                       // Sorts data from oldest to newest
+            .onSnapshot(querySnapshot => {
+
+                querySnapshot.forEach(doc => {
+                    const docData = {
+                        id: doc.id,
+                        ...doc.data()
+                    }
+
+                   console.log('Doc from snapshot:\n' + JSON.stringify(docData)) 
+
+                    dispatch({
+                        type: ACTION.SETCHILDFOLDERS,
+                        payload: { childFolders: docData }
+                    })
+
+                }) 
+            })   
+
+      
+    }, [currentUser, folderId])// Runs any times the current user or folder id changes
+
+    
 
     return state;
 }
