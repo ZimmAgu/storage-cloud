@@ -1,7 +1,7 @@
 // React Imports
 import React from 'react'
 import { Container } from 'react-bootstrap'
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 
 // Storage Cloud Imports
 import AddFolderButton from '../Folders/AddFolderButton'
@@ -14,9 +14,11 @@ import Breadcrumbs from '../Folders/Breadcrumbs';
   
 
 function Dashboard() {
-    const { folderId } = useParams()
-    console.log(folderId)
-    const { folder, childFolders } = FolderUseLogic(null, folderId)
+    const { folderId } = useParams();
+    console.log(folderId);
+
+    const { state = {} } = useLocation();
+    const { folder, childFolders } = FolderUseLogic(state.folder, folderId);
 
 
 

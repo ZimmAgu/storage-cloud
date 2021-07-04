@@ -17,13 +17,16 @@ function Breadcrumbs({ currentFolder }) {
     return (
         
         <Breadcrumb className="flex-grow-1">
-            {folderPath.map((folder) => ( 
+            {folderPath.map((folder, index) => ( 
                 <Breadcrumb.Item 
                     className="text-truncate" 
                     key={folder.id}
                     style={{maxWidth: '10em'}} 
                 >
-                    <Link to={folder.id ? `/folder/${folder.id}` : '/'}> 
+                    <Link to={{
+                        pathname: folder.id ? `/folder/${folder.id}` : '/',     // Sets the link of each breadcrumb to its specific folder
+                        state: {folder: {folder, path: folderPath.slice(1, index)}}     // Passes state from the first parent in a path to the most current element. This will persist the location of the route. This way the breadcrumbs will not re-render every time the user clicks them
+                    }}> 
                         {folder.name}
                     </Link>
                 </Breadcrumb.Item>

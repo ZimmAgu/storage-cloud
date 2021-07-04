@@ -8,7 +8,13 @@ import { faFolder } from '@fortawesome/free-solid-svg-icons'
 function Folder({folder}) {
     return (
         <>
-            <Link to={`/folder/${folder.id}`} style={{textDecoration: 'none'}}>
+            <Link 
+                to={{
+                    pathname: `/folder/${folder.id}`,
+                    state: {folder: folder}
+                }} 
+                style={{textDecoration: 'none'}}
+            >
                 <Button variant="outline-secondary"  className="text-truncate w-100" style={{ textAlign: "left" }}>
                     <FontAwesomeIcon icon={faFolder} style={{ marginRight: "0.5em" }}/>
                     {folder.name}
