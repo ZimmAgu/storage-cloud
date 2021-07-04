@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { Alert, Button, Card, Form } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useAuthContext } from '../Firebase/authorization';
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import CenteredContainer from './CenteredContainer'
 
 function ForgotPassword() {
@@ -13,7 +13,6 @@ function ForgotPassword() {
 
     const [formMessage, setFormMessage] = useState(''); // Will be used to print out an error message to the screen if something goes wrong with sign in
     const [pageIsLoading, setLoadingStatus] = useState(false); // These states will be used to check whether or not the page is still rendering
-    const history = useHistory()
 
     function handlePasswordReset (event) {
         event.preventDefault()

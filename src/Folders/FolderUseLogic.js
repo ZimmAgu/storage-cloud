@@ -87,7 +87,8 @@ function FolderUseLogic (folder = null, folderId = null) {
                     payload: { folder: docData } 
                 })
             })
-            .catch (() => { // If the current folder can not be retrieved, then it is returnd back to the root folder
+            .catch ((error) => { // If the current folder can not be retrieved, then it is returnd back to the root folder
+                console.log(error)
                 dispatch({ 
                     type: ACTION.UPDATEFOLDER,     
                     payload: { folder: RootFolder } 

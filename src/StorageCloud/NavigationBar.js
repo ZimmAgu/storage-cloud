@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar, Nav } from 'react-bootstrap'
+import { Navbar } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 function NavigationBar() {
@@ -12,7 +12,7 @@ function NavigationBar() {
             </Navbar.Brand>
 
             <Navbar.Brand>
-                <Link to='./user_profile' style={{ color:'black', textDecoration: 'none' }}>
+                <Link to='/user_profile' style={{ color:'black', textDecoration: 'none' }}>
                     Profile
                 </Link>
             </Navbar.Brand>

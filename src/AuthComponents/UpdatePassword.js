@@ -17,7 +17,7 @@ function UpdatePassword () {
     function handleFormSubmission (event) {
         event.preventDefault()
 
-        if (updatePasswordRef.current.value != updatePasswordConfRef.current.value) {
+        if (updatePasswordRef.current.value !== updatePasswordConfRef.current.value) {
             setFormMessage('Passwords do not match')
             return
         }
