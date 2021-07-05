@@ -3,14 +3,19 @@ import React from 'react'
 import { Container } from 'react-bootstrap'
 import { useParams, useLocation } from "react-router-dom";
 
-// Storage Cloud Imports
-import AddFolderButton from '../Folders/AddFolderButton'
-import NavigationBar from './NavigationBar'
+// Files Imports
+import AddFileButton from '../Files/AddFileButton';
 
 // Folders Imports
 import { FolderUseLogic} from '../Folders/FolderUseLogic'
 import Folder from '../Folders/Folder'
 import Breadcrumbs from '../Folders/Breadcrumbs';
+
+// Storage Cloud Imports
+import AddFolderButton from '../Folders/AddFolderButton'
+import NavigationBar from './NavigationBar'
+
+
   
 
 function Dashboard() {
@@ -30,6 +35,7 @@ function Dashboard() {
             <Container fluid>
                 <div className='d-flex mt-2'>
                     <Breadcrumbs currentFolder={folder}/>
+                    <AddFileButton />
                     <AddFolderButton currentFolder={folder}/>
                 </div>
                 {childFolders.length > 0 && (

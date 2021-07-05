@@ -1,10 +1,18 @@
+// React Imports
 import React from 'react'
-
-import { useAuthContext } from '../Firebase/authorization'
 import { Button, Card } from 'react-bootstrap'
 import { Link, useHistory } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+// AuthComponents Imports
 import CenteredContainer from './CenteredContainer'
+
+// Firebase Imports
+import { useAuthContext } from '../Firebase/authorization'
+
+// Storage Cloud Imports
+import NavigationBar  from '../StorageCloud/NavigationBar'
+
 
 function UserProfile() {
     const {currentUser, logUserOut} = useAuthContext()
@@ -19,6 +27,7 @@ function UserProfile() {
 
     return (
         <>
+            <NavigationBar />
             {currentUser &&
                 <CenteredContainer>
                         <Card>
