@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+import 'firebase/storage';
 
 const firebaseApp = firebase.initializeApp({
     apiKey: "AIzaSyA_lfo98ieo8aYKd_AnevfOhbZm5G5qJsU",
@@ -12,16 +13,17 @@ const firebaseApp = firebase.initializeApp({
 })
 
 const auth = firebaseApp.auth();
-const firestorage = firebaseApp.firestore();
+const firestore = firebaseApp.firestore();
+const storage = firebaseApp.storage();
 
 const userCollections = {
-    folders: firestorage.collection('folders'),
-    files: firestorage.collection('files'),
+    folders: firestore.collection('folders'),
+    files: firestore.collection('files'),
     timeStamp: firebase.firestore.FieldValue.serverTimestamp
 }
 
 export default firebaseApp;
-export {auth, userCollections}
+export {auth, userCollections, storage};
 
 
 
