@@ -2,7 +2,7 @@
 import React from 'react'
 
 // Firebase Imports
-import { storage } from '../Firebase/firebase' 
+import { userCollections, storage } from '../Firebase/firebase' 
 import { useAuthContext } from '../Firebase/authorization'
 
 // Folder Imports
@@ -33,6 +33,36 @@ function AddFileButton({ currentFolder }) {
         const storageRef = storage.ref(`/files/${currentUser.id}/${filePath}`)  // Creates a reference to the full path of the uploaded file
 
         const uploadTask = storageRef.put(file) // "puts" the file in the storage reference which uploads the file to firebase storage
+
+
+        uploadTask.on('state_changed', (snapshot) => { 
+            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            
+            console.log('Upload is ' + progress + '% done');
+
+            // switch (snapshot.state) {
+            //     case storage.TaskState.PAUSED: // or 'paused'
+            //         console.log('Upload is paused');
+            //         break;
+            //     case storage.TaskState.RUNNING: // or 'running'
+            //         console.log('Upload is running');
+            //         break;
+            // }
+        }, (error) => {
+            
+        }, () => {
+            uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => { // Retrieves the download url of the uploaded picture
+                console.log('File available at', downloadURL);
+                
+                userCollections.files.add({
+                    url: downloadURL,
+                    name: file.name,
+                    createdAt: userCollections.timeStamp(),
+                    folderId: currentFolder.id,
+                    userId: currentUser.uid
+                })
+            });
+        });
     }
 
     return (
