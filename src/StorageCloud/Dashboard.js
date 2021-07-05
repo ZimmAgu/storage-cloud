@@ -5,6 +5,7 @@ import { useParams, useLocation } from "react-router-dom";
 
 // Files Imports
 import AddFileButton from '../Files/AddFileButton';
+import File from '../Files/File';
 
 // Folders Imports
 import { FolderUseLogic} from '../Folders/FolderUseLogic'
@@ -23,9 +24,9 @@ function Dashboard() {
     console.log(folderId);
 
     const { state = {} } = useLocation();
-    const { folder, childFolders } = FolderUseLogic(state.folder, folderId);
+    const { folder, childFolders, childFiles } = FolderUseLogic(state.folder, folderId);
 
-
+    console.log(childFiles)
 
     return (
         <>
@@ -50,9 +51,23 @@ function Dashboard() {
                             </div>
                         ))}
                     </div>
-                )}  
+                )}
+
+                {childFolders.length > 0 && childFiles.length > 0 && <hr/>}  
                     
-                
+                {childFiles.length > 0 && (
+                    <div className="d-flex flex-wrap">
+                        {childFiles.map(doc => ( 
+                            <div
+                                key={doc.id}
+                                style={{ minWidth:'10em', maxWidth:'10em' }}
+                                className='p-2'
+                            >
+                                <File file={doc}/>
+                            </div>
+                        ))}
+                    </div>
+                )}  
             </Container>
         </>
     )

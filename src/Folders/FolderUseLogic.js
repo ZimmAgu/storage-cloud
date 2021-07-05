@@ -14,7 +14,8 @@ const RootFolder = { // This is where the user will be when the user first logs 
 const ACTION = { // All of the actions are put in constants for reusability to avoid typos
     SELECTFOLDER: 'SelectFolder',
     UPDATEFOLDER: 'UpdateFolder',
-    SETCHILDFOLDERS: 'SETChildFolders'
+    SETCHILDFOLDERS: 'SetChildFolders',
+    SETCHILDFILES: 'SetChildFiles'
 }
 
 
@@ -37,6 +38,11 @@ function reducer (state, { type, payload }) {
             return {
                 ...state,
                 childFolders: payload.childFolders
+            }
+        case ACTION.SETCHILDFILES:
+            return {
+                ...state,
+                childFiles: payload.childFiles
             }
         default: // Returns the current state if you use an ACTION that doesn't exist
             return state
@@ -127,6 +133,35 @@ function FolderUseLogic (folder = null, folderId = null) {
     }, [currentUser, folderId])// Runs any times the current user or folder id changes
 
     
+
+    useEffect (() => {
+        return userCollections.files
+            .where('folderId', '==', folderId)
+            .where('userId', '==', currentUser.uid)     // Searches only for folders that belong to the current use logged in
+            // .orderBy('createdAt')                       // Sorts data from oldest to newest
+            .onSnapshot(querySnapshot => {
+
+                const children = []
+
+                querySnapshot.forEach(doc => {
+                    const docData = {
+                        id: doc.id,
+                        ...doc.data()
+                    }
+
+
+                    children.push(docData)
+
+                    console.log('Files: ', children)
+                    
+                }) 
+                
+                dispatch({
+                    type: ACTION.SETCHILDFILES,
+                    payload: { childFiles: children }
+                })
+            })      
+    }, [currentUser, folderId])// Runs any times the current user or folder id changes
 
     return state;
 }
