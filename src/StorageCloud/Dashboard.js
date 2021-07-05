@@ -35,7 +35,7 @@ function Dashboard() {
             <Container fluid>
                 <div className='d-flex mt-2'>
                     <Breadcrumbs currentFolder={folder}/>
-                    <AddFileButton />
+                    <AddFileButton currentFolder={folder}/>
                     <AddFolderButton currentFolder={folder}/>
                 </div>
                 {childFolders.length > 0 && (
