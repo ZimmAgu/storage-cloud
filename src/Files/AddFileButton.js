@@ -1,6 +1,9 @@
 // React Imports
 import React, { useState } from 'react'
-import { v4 as uuidv4 } from 'uuid';
+import ReactDom from 'react-dom'
+
+// Boostrap Imports
+import { ProgressBar, Toast } from 'react-bootstrap'
 
 // Firebase Imports
 import { userCollections, storage } from '../Firebase/firebase' 
@@ -13,7 +16,8 @@ import { RootFolder } from '../Folders/FolderUseLogic'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileUpload } from '@fortawesome/free-solid-svg-icons'
 
-
+// NPM Imports
+import { v4 as uuidv4 } from 'uuid';
 
 
 
@@ -54,7 +58,7 @@ function AddFileButton({ currentFolder }) {
             
             console.log('Upload is ' + progress + '% done');
 
-            console.log('Uploadfing Files with state: ', uploadingFiles)
+           
         }, (error) => {
             
         }, () => {
@@ -82,6 +86,40 @@ function AddFileButton({ currentFolder }) {
                     style={{position: "absolute", right: "25000000%", opacity: "0"}}
                 />
             </label>
+
+            {uploadingFiles.length > 0 &&
+                ReactDom.createPortal(
+                    <div
+                        style={{
+                            position: 'absolute',
+                            bottom: '1rem',
+                            right: '1rem'
+                        }}
+                    >
+                        {uploadingFiles.map(doc => ( 
+                            <Toast key={doc.id}>
+                                <Toast.Header>
+                                    {doc.name}
+                                </Toast.Header>
+
+                                <Toast.Body>
+                                    <ProgressBar 
+                                        animated={!doc.error}
+                                        variant={doc.error ? "danger" : "primary"}
+                                        now={doc.error ? 100 : doc.progress * 100}
+                                        label={
+                                            doc.error
+                                            ? "Error"
+                                            : `${Math.round(doc.progress * 100)}%`
+                                        }
+                                    />
+                                </Toast.Body>
+                            </Toast>
+                        ))}
+                    </div>,
+                    document.body
+                )
+            }
         </>
     )
 }
