@@ -59,12 +59,27 @@ function AddFileButton({ currentFolder }) {
             console.log('Upload is ' + progress + '% done');
 
            
+            setUploadingFiles(previousUploadingFiles => {   // Sets the uploading progress state to the current progress of the state
+                return previousUploadingFiles.map(doc => { 
+                    if (doc.id === generatedId) {
+                        return {...doc, progress: progress}
+                    }
+
+                    return doc
+                })
+            })
         }, (error) => {
             
         }, () => {
             uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => { // Retrieves the download url of the uploaded picture
                 console.log('File available at', downloadURL);
                 
+                setUploadingFiles(previousUploadingFiles => {
+                    return previousUploadingFiles.filter(doc => {
+                        return doc.id != generatedId;
+                    })
+                })
+
                 userCollections.files.add({
                     url: downloadURL,
                     name: file.name,
@@ -98,7 +113,9 @@ function AddFileButton({ currentFolder }) {
                     >
                         {uploadingFiles.map(doc => ( 
                             <Toast key={doc.id}>
-                                <Toast.Header>
+                                <Toast.Header
+                                    closeButton={doc.error}
+                                >
                                     {doc.name}
                                 </Toast.Header>
 
@@ -106,11 +123,11 @@ function AddFileButton({ currentFolder }) {
                                     <ProgressBar 
                                         animated={!doc.error}
                                         variant={doc.error ? "danger" : "primary"}
-                                        now={doc.error ? 100 : doc.progress * 100}
+                                        now={doc.error ? 100 : doc.progress}
                                         label={
                                             doc.error
                                             ? "Error"
-                                            : `${Math.round(doc.progress * 100)}%`
+                                            : `${Math.round(doc.progress)}%`
                                         }
                                     />
                                 </Toast.Body>
