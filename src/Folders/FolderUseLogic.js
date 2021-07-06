@@ -138,7 +138,7 @@ function FolderUseLogic (folder = null, folderId = null) {
         return userCollections.files
             .where('folderId', '==', folderId)
             .where('userId', '==', currentUser.uid)     // Searches only for folders that belong to the current use logged in
-            // .orderBy('createdAt')                       // Sorts data from oldest to newest
+            .orderBy('createdAt')                       // Sorts data from oldest to newest
             .onSnapshot(querySnapshot => {
 
                 const children = []

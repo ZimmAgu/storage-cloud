@@ -1,5 +1,6 @@
 // React Imports
-import React from 'react'
+import React, { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid';
 
 // Firebase Imports
 import { userCollections, storage } from '../Firebase/firebase' 
@@ -17,12 +18,25 @@ import { faFileUpload } from '@fortawesome/free-solid-svg-icons'
 
 
 function AddFileButton({ currentFolder }) {
-
+    const [uploadingFiles, setUploadingFiles] = useState([]);
     const { currentUser } = useAuthContext()
 
     function handleFileUpload (event) {
         console.log('yuyup')
+
         const file = event.target.files[0]
+
+        const generatedId = uuidv4();
+        setUploadingFiles(previousUploadingFiles => [ 
+            ...previousUploadingFiles,
+            {
+                id: generatedId,
+                name: file.name,
+                progress: 0,
+                error: false
+            }
+        ])
+
 
         if (currentFolder == null && file == null ) return;     // If there is no folder or file when present when this function is ran it will do nothing
 
@@ -40,14 +54,7 @@ function AddFileButton({ currentFolder }) {
             
             console.log('Upload is ' + progress + '% done');
 
-            // switch (snapshot.state) {
-            //     case storage.TaskState.PAUSED: // or 'paused'
-            //         console.log('Upload is paused');
-            //         break;
-            //     case storage.TaskState.RUNNING: // or 'running'
-            //         console.log('Upload is running');
-            //         break;
-            // }
+            console.log('Uploadfing Files with state: ', uploadingFiles)
         }, (error) => {
             
         }, () => {
@@ -66,15 +73,16 @@ function AddFileButton({ currentFolder }) {
     }
 
     return (
-        <label className="btn btn-outline-primary" style={{marginRight: '1em'}}>
-            <FontAwesomeIcon icon={faFileUpload}/>
-            <input 
-                type="file"
-                onChange={handleFileUpload}
-                style={{position: "absolute", right: "25000000%", opacity: "0"}}
-            />
-        </label>
-        
+        <>
+            <label className="btn btn-outline-primary" style={{marginRight: '1em'}}>
+                <FontAwesomeIcon icon={faFileUpload}/>
+                <input 
+                    type="file"
+                    onChange={handleFileUpload}
+                    style={{position: "absolute", right: "25000000%", opacity: "0"}}
+                />
+            </label>
+        </>
     )
 }
 
