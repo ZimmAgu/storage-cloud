@@ -74,19 +74,34 @@ function AddFileButton({ currentFolder }) {
             uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => { // Retrieves the download url of the uploaded picture
                 console.log('File available at', downloadURL);
                 
-                setUploadingFiles(previousUploadingFiles => {
+                setUploadingFiles(previousUploadingFiles => {       // When the upload is done, the current id of the document is set to something other than its generated id so the toast disappears
                     return previousUploadingFiles.filter(doc => {
                         return doc.id != generatedId;
                     })
                 })
 
-                userCollections.files.add({
-                    url: downloadURL,
-                    name: file.name,
-                    createdAt: userCollections.timeStamp(),
-                    folderId: currentFolder.id,
-                    userId: currentUser.uid
-                })
+                userCollections.files
+                    .where('name', '==', file.name)
+                    .where('userId', '==', currentUser.uid)
+                    .where('folderId', '==', currentFolder.id)
+                    .get()
+                    .then(doc => {  // Checks if a the file being updated exists already. If the file already exist, then it is updated. If the file does not yet exiast, then a new file is created
+                        const existingFile = doc.docs[0]
+
+                        if (existingFile) {
+                            existingFile.ref.update({url: downloadURL})
+                            console.log('File has been updated')
+                        } else {
+                            console.log('Adding ')
+                            userCollections.files.add({
+                                url: downloadURL,
+                                name: file.name,
+                                createdAt: userCollections.timeStamp(),
+                                folderId: currentFolder.id,
+                                userId: currentUser.uid
+                            }) 
+                        }
+                    })
             });
         });
     }
