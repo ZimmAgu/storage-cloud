@@ -39,6 +39,9 @@ function Dashboard() {
                     <AddFileButton currentFolder={folder}/>
                     <AddFolderButton currentFolder={folder}/>
                 </div>
+                
+                {childFolders.length > 0 && <p style={{marginLeft: '1em', color: '#5F6367'}}>Folders</p>}
+
                 {childFolders.length > 0 && (
                     <div className="d-flex flex-wrap">
                         {childFolders.map(doc => ( 
@@ -54,7 +57,9 @@ function Dashboard() {
                 )}
 
                 {childFolders.length > 0 && childFiles.length > 0 && <hr/>}  
-                    
+                
+                {childFiles.length > 0 && <p style={{marginLeft: '1em', color: '#5F6367'}}>Files</p>}
+
                 {childFiles.length > 0 && (
                     <div className="d-flex flex-wrap">
                         {childFiles.map(doc => ( 
