@@ -30,9 +30,9 @@ function UserProfile() {
             <NavigationBar />
             {currentUser &&
                 <CenteredContainer>
-                        <Card>
+                        <Card className='p-3'>
                             <Card.Body className="text-center">
-                                <h1>Hello {currentUser.email}</h1>
+                                <h1>Hello {currentUser.displayName}</h1>
                             </Card.Body>
                             
                             <Link to='./update_email'>

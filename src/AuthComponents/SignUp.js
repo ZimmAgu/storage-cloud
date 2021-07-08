@@ -11,8 +11,9 @@ function SignUpForm () {
     const signUpEmailRef = useRef();
     const signUpPasswordRef = useRef();
     const signUpPasswordConfRef = useRef();
+    const nameRef = useRef();
 
-    const {signUserUp, currentUser} = useAuthContext(); // Firebase functionality imported from authorization.js to add a new user to the database
+    const {signUserUp, currentUser, updateUserProfile} = useAuthContext(); // Firebase functionality imported from authorization.js to add a new user to the database
     const [formError, setFormError] = useState(''); // Will be used to print out an error message to the screen if something goes wrong with sign in
     const [pageIsLoading, setLoadingStatus] = useState(false); // These states will be used to check whether or not the page is still rendering
     const history = useHistory()
@@ -34,6 +35,10 @@ function SignUpForm () {
   
 
         signUserUp(signUpEmailRef.current.value, signUpPasswordRef.current.value) // Creates the user accout
+            .then((result) => {
+                result.user.updateProfile({displayName: nameRef.current.value})
+                console.log('Display Name Updated!')
+            })
             .then(() => {
                 setFormError('');
                 setLoadingStatus(true);
@@ -44,7 +49,6 @@ function SignUpForm () {
                 setFormError('Sign in did not work');
                 console.log('Sign in did not work');
             })
-        
         setLoadingStatus(false);
     }
 
@@ -55,6 +59,12 @@ function SignUpForm () {
                     <h2 className="text-center mb-4">Sign Up</h2>
                     {formError && <Alert variant="danger">{formError}</Alert>}
                     <Form>
+                        <Form.Group className="mb-3" id="signup_Form_Name" >
+                            <Form.Label>Name</Form.Label>
+                            <Form.Control type="text" placeholder="Enter your name" ref={nameRef}/>
+                        </Form.Group>
+
+
                         <Form.Group className="mb-3" id="signup_Form_Email" >
                             <Form.Label>Email address</Form.Label>
                             <Form.Control type="email" placeholder="Enter email" ref={signUpEmailRef} required/>
@@ -65,6 +75,7 @@ function SignUpForm () {
                             <Form.Label>Password</Form.Label>
                             <Form.Control type="password" placeholder="Password" ref={signUpPasswordRef} required/>
                         </Form.Group>
+
 
                         <Form.Group className="mb-4" id="signup_Password_Confirmation">
                             <Form.Label>Password Confirmation</Form.Label>
