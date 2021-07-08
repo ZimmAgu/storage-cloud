@@ -19,6 +19,7 @@ function File({ file }) {
                 href={file.url}
                 target="_blank"
                 className="btn btn-outline-secondary text-truncate w-100"
+                style={{ minWidth: "8em", maxWidth: "8em", textAlign: "left" }}
             >
                 <FontAwesomeIcon icon={ faFile } style={{marginRight: "1em"}}/>
                 {file.name}
