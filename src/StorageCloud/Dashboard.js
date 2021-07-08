@@ -47,7 +47,6 @@ function Dashboard() {
                         {childFolders.map(doc => ( 
                             <div
                                 key={doc.id}
-                                style={{ minWidth:'10em', maxWidth:'10em' }}
                                 className='p-2'
                             >
                                 <Folder folder={doc}/>
