@@ -13,7 +13,7 @@ function SignUpForm () {
     const signUpPasswordConfRef = useRef();
     const nameRef = useRef();
 
-    const {signUserUp, currentUser, updateUserProfile} = useAuthContext(); // Firebase functionality imported from authorization.js to add a new user to the database
+    const { signUserUp, currentUser } = useAuthContext(); // Firebase functionality imported from authorization.js to add a new user to the database
     const [formError, setFormError] = useState(''); // Will be used to print out an error message to the screen if something goes wrong with sign in
     const [pageIsLoading, setLoadingStatus] = useState(false); // These states will be used to check whether or not the page is still rendering
     const history = useHistory()

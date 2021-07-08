@@ -76,7 +76,7 @@ function AddFileButton({ currentFolder }) {
                 
                 setUploadingFiles(previousUploadingFiles => {       // When the upload is done, the current id of the document is set to something other than its generated id so the toast disappears
                     return previousUploadingFiles.filter(doc => {
-                        return doc.id != generatedId;
+                        return doc.id !== generatedId;
                     })
                 })
 

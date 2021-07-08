@@ -23,11 +23,14 @@ function UpdateDisplayName() {
         event.preventDefault();
 
         try {
+            setLoadingStatus(true);
             currentUser.updateProfile({displayName: updateNameRef.current.value})
             setFormMessage('Your display name has been updated')
         } catch {
             setFormMessage('There was an error changing your display name')
         }
+
+        setLoadingStatus(false);
         
     }
 
