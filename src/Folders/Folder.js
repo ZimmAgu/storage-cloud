@@ -3,7 +3,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import {Button, ButtonGroup, Dropdown} from 'react-bootstrap'
 import { userCollections } from '../Firebase/firebase' 
-import { useAuthContext } from '../Firebase/authorization'
 
 // Font Awesom Imports
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -11,20 +10,8 @@ import { faFolder } from '@fortawesome/free-solid-svg-icons'
 
 
 function Folder({folder}) {
-    const { currentUser } = useAuthContext()
-
-
     function handleDeletion () {
-        console.log('Folder clicked on ', folder)
-        console.log('folder.name ', folder.name)
-        console.log('current user id ', currentUser.uid)
-        console.log('Folder id ', folder.id)
-
-        userCollections.folders.doc(folder.id)
-            .delete()
-            .then(() => {
-                console.log('Document has been deleted')
-            })
+        userCollections.folders.doc(folder.id).delete() // Deletes the chosen folder
     }
 
     return (
@@ -43,7 +30,7 @@ function Folder({folder}) {
                     {folder.name}
                 </Button>
             </Link>
-                <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
+                <Dropdown.Toggle split variant="outline-secondary" id="dropdown-split-basic" />
                 <Dropdown.Menu>
                     <Dropdown.Item onClick={handleDeletion}>Delete Folder</Dropdown.Item>
                 </Dropdown.Menu>
