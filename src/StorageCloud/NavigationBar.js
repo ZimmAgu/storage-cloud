@@ -7,7 +7,7 @@ function NavigationBar() {
         <Navbar bg="light" expand={'sm' | 'md' | 'lg' | 'xl'} style={{paddingRight: '1em', paddingLeft: '1em'}}>
             <Navbar.Brand>
                 <Link to='/' style={{ color:'black', textDecoration: 'none' }}>
-                    ZA Cloud
+                    The Z Cloud
                 </Link>
             </Navbar.Brand>
 
