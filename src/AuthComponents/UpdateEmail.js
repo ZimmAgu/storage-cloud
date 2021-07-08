@@ -37,7 +37,7 @@ function UpdateEmail () {
                     <Form>
                         <Form.Group className="mb-3" id="update_Email_Form_Email" >
                             <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" placeholder="Enter your new email" ref={updateEmailRef} required/>
+                            <Form.Control type="email" placeholder="Enter your new email address" ref={updateEmailRef} required/>
                         </Form.Group>
                         
                         <Button className="w-100 " type="submit" disabled={pageIsLoading}>Update</Button>

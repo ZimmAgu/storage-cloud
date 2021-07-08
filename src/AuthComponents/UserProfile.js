@@ -35,8 +35,14 @@ function UserProfile() {
                                 <h1>Hello {currentUser.displayName}</h1>
                             </Card.Body>
                             
-                            <Link to='./update_email'>
+                            <Link to='./update_display_name'>
                                 <Button className="w-100 text-center mb-2">
+                                    Update Display Name
+                                </Button>
+                            </Link>
+
+                            <Link to='./update_email'>
+                                <Button className="w-100 text-center mt-3 mb-2">
                                     Update Email
                                 </Button>
                             </Link>

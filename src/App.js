@@ -13,6 +13,7 @@ import SignUpForm from './AuthComponents/SignUp';
 import UpdateEmail from './AuthComponents/UpdateEmail';
 import UpdatePassword from './AuthComponents/UpdatePassword';
 import UserProfile from './AuthComponents/UserProfile';
+import UpdateDisplayName from './AuthComponents/UpdateDisplayName';
 
 // StorageCloud Imports
 import Dashboard from './StorageCloud/Dashboard';
@@ -36,6 +37,8 @@ function App () {
                     <PrivateRoute path="/update_email" component={UpdateEmail} />
                     
                     <PrivateRoute path="/change_password" component={UpdatePassword}/>
+
+                    <PrivateRoute path="/update_display_name" component={UpdateDisplayName} />
 
 
                     {/* Authentication Routes */}
