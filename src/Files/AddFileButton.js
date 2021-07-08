@@ -26,7 +26,6 @@ function AddFileButton({ currentFolder }) {
     const { currentUser } = useAuthContext()
 
     function handleFileUpload (event) {
-        console.log('yuyup')
 
         const file = event.target.files[0]
 
@@ -56,7 +55,6 @@ function AddFileButton({ currentFolder }) {
         uploadTask.on('state_changed', (snapshot) => { 
             const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
             
-            console.log('Upload is ' + progress + '% done');
 
            
             setUploadingFiles(previousUploadingFiles => {   // Sets the uploading progress state to the current progress of the state
@@ -72,7 +70,6 @@ function AddFileButton({ currentFolder }) {
             
         }, () => {
             uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => { // Retrieves the download url of the uploaded picture
-                console.log('File available at', downloadURL);
                 
                 setUploadingFiles(previousUploadingFiles => {       // When the upload is done, the current id of the document is set to something other than its generated id so the toast disappears
                     return previousUploadingFiles.filter(doc => {
@@ -90,9 +87,7 @@ function AddFileButton({ currentFolder }) {
 
                         if (existingFile) {
                             existingFile.ref.update({url: downloadURL})
-                            console.log('File has been updated')
                         } else {
-                            console.log('Adding ')
                             userCollections.files.add({
                                 url: downloadURL,
                                 name: file.name,

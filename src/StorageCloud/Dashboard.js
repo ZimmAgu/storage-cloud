@@ -21,12 +21,10 @@ import NavigationBar from './NavigationBar'
 
 function Dashboard() {
     const { folderId } = useParams();
-    console.log(folderId);
 
     const { state = {} } = useLocation();
     const { folder, childFolders, childFiles } = FolderUseLogic(state.folder, folderId);
 
-    console.log(childFiles)
 
     return (
         <>

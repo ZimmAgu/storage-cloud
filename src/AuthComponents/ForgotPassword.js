@@ -21,11 +21,9 @@ function ForgotPassword() {
             .then(() => {
                 setLoadingStatus(true)
                 setFormMessage('Your password has been reset. Check your mailbox for further instructions');
-                console.log('Password reset');
             })
             .catch(() => {
                 setFormMessage('Could not reset your password');
-                console.log('Password not reset');
             })
     }
     

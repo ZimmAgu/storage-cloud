@@ -86,7 +86,6 @@ function FolderUseLogic (folder = null, folderId = null) {
                     ...doc.data()
                 }
 
-                console.log('Document data: ' + JSON.stringify(docData));
 
                 dispatch({ 
                     type: ACTION.UPDATEFOLDER,     
@@ -94,7 +93,6 @@ function FolderUseLogic (folder = null, folderId = null) {
                 })
             })
             .catch ((error) => { // If the current folder can not be retrieved, then it is returnd back to the root folder
-                console.log(error)
                 dispatch({ 
                     type: ACTION.UPDATEFOLDER,     
                     payload: { folder: RootFolder } 
@@ -151,8 +149,6 @@ function FolderUseLogic (folder = null, folderId = null) {
 
 
                     children.push(docData)
-
-                    console.log('Files: ', children)
                     
                 }) 
                 

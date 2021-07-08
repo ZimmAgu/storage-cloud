@@ -37,17 +37,14 @@ function SignUpForm () {
         signUserUp(signUpEmailRef.current.value, signUpPasswordRef.current.value) // Creates the user accout
             .then((result) => {
                 result.user.updateProfile({displayName: nameRef.current.value})
-                console.log('Display Name Updated!')
             })
             .then(() => {
                 setFormError('');
                 setLoadingStatus(true);
-                console.log('The sign up was a success'); 
                 history.push('/') // Redirects to the root page of the document
             })
             .catch(() => {
                 setFormError('Sign in did not work');
-                console.log('Sign in did not work');
             })
         setLoadingStatus(false);
     }

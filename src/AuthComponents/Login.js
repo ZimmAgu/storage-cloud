@@ -27,12 +27,10 @@ function LoginForm () {
             .then(() => {
                 setFormError('');
                 setLoadingStatus(true);
-                console.log('Login successful for: ' + loginEmailRef.current.value)
                 history.push('/') // Redirects to the root page of the document
             })
             .catch( () => {
                 setFormError('Log in was not successful')
-                console.log('Login failed')
             })
 
         setLoadingStatus(false);
