@@ -38,7 +38,7 @@ function UpdateDisplayName() {
         <CenteredContainer>
             <Card onSubmit={handleFormSubmission}>
                 <Card.Body>
-                    <h2 className="text-center mb-4">Update Email</h2>
+                    <h2 className="text-center mb-4">Update Name</h2>
                     {formMessage && <Alert variant="danger">{formMessage}</Alert>}
                     <Form>
                         <Form.Group className="mb-3" id="update_Name_Form" >
